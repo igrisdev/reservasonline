@@ -1,4 +1,6 @@
 ---
+import '@fontsource/poppins'
+
 interface Props {
   title: string
 }
@@ -34,4 +36,8 @@ const { title } = Astro.props
   </body>
 </html>
 
-<style is:global></style>
+<style is:global>
+  body {
+    font-family: 'Poppins', sans-serif;
+  }
+</style>

@@ -1,3 +1,7 @@
+---
+import DriveIcon from '@assets/icons/DriveIcon.astro'
+---
+
 <header class=''>
   <section class='h-20 flex items-center justify-between px-2'>
     <div class='text-center'>
@@ -8,16 +12,30 @@
     </div>
 
     <nav>
-      <ul class='flex items-center gap-4'>
-        <li><a href='#'>Inicio</a></li>
+      <ul class='flex items-center gap-4 font-medium'>
+        <li>
+          <a
+            href='#'
+            class='text-local_title_primary font-semibold'
+            >Inicio</a
+          >
+        </li>
         <li><a href='#'>Sobre Nosotros</a></li>
         <li><a href='#'>Especialidades</a></li>
         <li><a href='#'>Ubicación</a></li>
       </ul>
     </nav>
 
-    <a href='#'>Pide en linea</a>
+    <a
+      href='#'
+      class='px-4 py-2 text-sm rounded-md text-local_text_primary font-medium bg-local_background_secondary flex  gap-2'
+    >
+      <span>Ordena en linea</span>
+      <DriveIcon />
+    </a>
   </section>
 
   <section></section>
 </header>
+
+<section></section>
