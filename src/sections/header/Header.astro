@@ -1,5 +1,6 @@
 ---
 import DriveIcon from '@assets/icons/DriveIcon.astro'
+import MenuIcon from '@assets/icons/MenuIcon.astro'
 ---
 
 <header class=''>
@@ -11,7 +12,7 @@ import DriveIcon from '@assets/icons/DriveIcon.astro'
       <span>popayán</span>
     </div>
 
-    <nav>
+    <nav class='hidden md:block'>
       <ul class='flex items-center gap-4 font-medium'>
         <li>
           <a
@@ -28,7 +29,30 @@ import DriveIcon from '@assets/icons/DriveIcon.astro'
 
     <a
       href='#'
-      class='px-4 py-2 text-sm rounded-md text-local_text_primary font-medium bg-local_background_secondary flex  gap-2'
+      class='hidden lg:flex px-4 py-2 text-sm rounded-sm text-local_text_primary font-medium bg-local_background_secondary gap-2'
+    >
+      <span>Ordena en linea</span>
+      <DriveIcon />
+    </a>
+    <div class='block md:hidden text-center text-local_text_primary rounded-sm'>
+      <MenuIcon />
+    </div>
+  </section>
+
+  <section
+    class='h-[calc(100dvh-80px)] bg-red-400 background-image flex flex-col justify-center items-center gap-20 relative'
+  >
+    <div class='filter-dark'></div>
+
+    <h2
+      class='xl:text-9xl lg:text-8xl md:text-6xl text-3xl text-center text-local_title_tertiary font-bold z-10'
+    >
+      COMIDAS RÁPIDAS <br /> A LA ORDEN
+    </h2>
+
+    <a
+      href='#'
+      class='px-4 py-2 md:text-xl text-sm rounded-sm text-local_text_primary font-medium bg-local_background_secondary flex gap-2 w-max z-10 items-center'
     >
       <span>Ordena en linea</span>
       <DriveIcon />
@@ -36,6 +60,23 @@ import DriveIcon from '@assets/icons/DriveIcon.astro'
   </section>
 
   <section></section>
-</header>
 
-<section></section>
+  <style>
+    .background-image {
+      background-image: url('/portada.webp');
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .filter-dark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+  </style>
+</header>
