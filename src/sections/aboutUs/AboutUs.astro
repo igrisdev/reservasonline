@@ -1,0 +1,83 @@
+---
+import ArticleImage from '@components/aboutUs/ArticleImage.astro'
+---
+
+<section class='max-w-7xl mx-auto'>
+  <ArticleImage
+    src='image1.jpg'
+    alt='image1'
+    style='grid-area: image1;'
+  />
+
+  <article
+    style='grid-area: aboutUs;'
+    class='bg-local_background_secondary rounded-md p-2 shadow-md'
+  >
+    <h3 class='text-2xl font-bold text-local_title_tertiary'>Sobre nosotros</h3>
+    <p class='text-local_text_tertiary'>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus.
+      Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies
+      sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius
+    </p>
+  </article>
+
+  <ArticleImage
+    src='image2.jpg'
+    alt='image2'
+    style='grid-area: image2;'
+  />
+  <ArticleImage
+    src='image3.jpg'
+    alt='image3'
+    style='grid-area: image3;'
+  />
+  <ArticleImage
+    src='image4.jpg'
+    alt='image4'
+    style='grid-area: image4;'
+  />
+  <ArticleImage
+    src='image5.jpg'
+    alt='image5'
+    style='grid-area: image5;'
+  />
+</section>
+
+<style>
+  section {
+    display: grid;
+    grid-template-areas:
+      'image1 image1 aboutUs'
+      'image2 image3 image4'
+      'image2 image5 image5';
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: repeat(3, 325px);
+    gap: 0.7rem;
+    padding: 0.5rem;
+  }
+
+  @media (max-width: 768px) {
+    section {
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+      grid-template-areas:
+        'image1 aboutUs'
+        'image3 image4'
+        'image2 image5';
+    }
+  }
+
+  @media (max-width: 500px) {
+    section {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+      grid-template-areas:
+        'aboutUs'
+        'image1'
+        'image2'
+        'image3'
+        'image4'
+        'image5';
+    }
+  }
+</style>
