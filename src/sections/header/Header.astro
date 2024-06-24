@@ -1,6 +1,7 @@
 ---
-import DriveIcon from '@assets/icons/DriveIcon.astro'
 import MenuIcon from '@assets/icons/MenuIcon.astro'
+
+import LinkBuy from '@components/LinkBuy.astro'
 ---
 
 <header class=''>
@@ -27,14 +28,13 @@ import MenuIcon from '@assets/icons/MenuIcon.astro'
       </ul>
     </nav>
 
-    <a
+    <LinkBuy
       href='#'
-      class='hidden lg:flex px-4 py-2 text-sm rounded-sm text-local_text_primary font-medium bg-local_background_secondary gap-2'
+      styles='hidden lg:flex'
+    />
+    <div
+      class='block md:hidden text-center text-local_background_secondary rounded-sm'
     >
-      <span>Ordena en linea</span>
-      <DriveIcon />
-    </a>
-    <div class='block md:hidden text-center text-local_background_secondary rounded-sm'>
       <MenuIcon />
     </div>
   </section>
@@ -50,13 +50,10 @@ import MenuIcon from '@assets/icons/MenuIcon.astro'
       COMIDAS RÁPIDAS <br /> A LA ORDEN
     </h2>
 
-    <a
+    <LinkBuy
       href='#'
-      class='px-4 py-2 md:text-xl text-sm rounded-sm text-local_text_primary font-medium bg-local_background_secondary flex gap-2 w-max z-10 items-center'
-    >
-      <span>Ordena en linea</span>
-      <DriveIcon />
-    </a>
+      styles='md:text-xl flex'
+    />
   </section>
 
   <section></section>
