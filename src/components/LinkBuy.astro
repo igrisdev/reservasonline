@@ -4,9 +4,10 @@ import DriveIcon from '@assets/icons/DriveIcon.astro'
 interface Props {
   href: string
   styles: string
+  value?: string
 }
 
-const { href, styles } = Astro.props
+const { href, styles, value } = Astro.props
 ---
 
 <a
@@ -14,6 +15,6 @@ const { href, styles } = Astro.props
   class={'px-4 py-2 text-sm rounded-sm text-local_text_primary font-medium bg-local_background_secondary gap-2 w-max z-10 items-center ' +
     styles}
 >
-  <span>Ordena en linea</span>
+  <span>{value ? value : 'Ordena en linea'}</span>
   <DriveIcon />
 </a>
