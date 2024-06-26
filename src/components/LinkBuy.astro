@@ -2,7 +2,7 @@
 import DriveIcon from '@assets/icons/DriveIcon.astro'
 
 interface Props {
-  href: string
+  href?: string
   styles: string
   value?: string
 }
@@ -11,7 +11,7 @@ const { href, styles, value } = Astro.props
 ---
 
 <a
-  href={href}
+  href={'/BuyOnline'}
   class={'px-4 py-2 text-sm rounded-sm text-local_text_primary font-medium bg-local_background_secondary gap-2 w-max z-10 items-center ' +
     styles}
 >
