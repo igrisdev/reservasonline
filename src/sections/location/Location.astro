@@ -8,7 +8,10 @@ import FacebookIcon from '@assets/icons/FacebookIcon.astro'
 import RowIcon from '@assets/icons/RowIcon.astro'
 ---
 
-<footer class='p-2 max-w-7xl mx-auto pb-10 relative' id='location'>
+<footer
+  class='p-2 max-w-7xl mx-auto pb-10 relative'
+  id='location'
+>
   <a
     href='#'
     class='absolute bottom-2 right-4 flex items-center hover:text-local_background_quaternary'
@@ -46,11 +49,22 @@ import RowIcon from '@assets/icons/RowIcon.astro'
             <p class='text-sm'>310 5213172</p>
           </div>
         </div>
+
         <div>
-          <h3 class='text-xl font-bold mb-2'>CORREO ELECTRÓNICO</h3>
+          <h3 class='text-xl font-bold mb-2'>REDES SOCIALES</h3>
           <div class='flex items-center gap-2'>
-            <EmailIcon />
-            <p class='text-sm'>waldemarsanchez2020@gmail.com</p>
+            <a
+              href='https://www.facebook.com/lasmejoressalchipapasdepopayan/'
+              target='_blank'
+            >
+              <FacebookIcon />
+            </a>
+            <a
+              href='https://api.whatsapp.com/send?phone=%2B573105213172&context=ARAbMpHvV73GYUWKFGpprILkPmyEb46qW94IwaM3Ajgllpozzs1_TSRqMNdBFLcf345t_TO80a7QgY1SVARd3y3DL2RAikiSVAjYLSG4cJ3nTCx6qKUmvFKnj4WvSHudzqzu5GNFds-x2WI8AmgkSrGXsQ&source=FB_Page&app=facebook&entry_point=page_cta'
+              target='_blank'
+            >
+              <WhatsAppIcon />
+            </a>
           </div>
         </div>
       </div>
@@ -61,7 +75,7 @@ import RowIcon from '@assets/icons/RowIcon.astro'
           <div class='flex items-center gap-8'>
             <div>
               <h4>Lunes a Viernes</h4>
-              <div class='flex items-center'>
+              <div class='flex items-center gap-2'>
                 <ClockIcon />
                 <p class='text-sm'>6pm a 12 pm</p>
               </div>
@@ -69,7 +83,7 @@ import RowIcon from '@assets/icons/RowIcon.astro'
 
             <div>
               <h4>Sábados y Domingos</h4>
-              <div class='flex items-center'>
+              <div class='flex items-center gap-2'>
                 <ClockIcon />
                 <p class='text-sm'>6pm a 12 pm</p>
               </div>
@@ -77,10 +91,10 @@ import RowIcon from '@assets/icons/RowIcon.astro'
           </div>
         </div>
         <div>
-          <h3 class='text-xl font-bold mb-2'>REDES SOCIALES</h3>
+          <h3 class='text-xl font-bold mb-2'>CORREO ELECTRÓNICO</h3>
           <div class='flex items-center gap-2'>
-            <FacebookIcon />
-            <WhatsAppIcon />
+            <EmailIcon />
+            <p class='text-sm'>waldemarsanchez2020@gmail.com</p>
           </div>
         </div>
       </div>
