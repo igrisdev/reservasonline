@@ -19,7 +19,10 @@ import RowIcon from '@assets/icons/RowIcon.astro'
   <h2 class='text-center text-2xl font-bold mb-4'>UBICACIÓN</h2>
 
   <div>
-    <section class='h-40 bg-local_background_tertiary rounded-md mb-4'>
+    <section
+      id='map'
+      class='h-96 bg-local_background_tertiary rounded-md mb-4'
+    >
     </section>
 
     <section class='flex flex-col md:flex-row gap-4 md:gap-0'>
@@ -28,7 +31,12 @@ import RowIcon from '@assets/icons/RowIcon.astro'
           <h3 class='text-xl font-bold mb-2'>DIRECCIÓN</h3>
           <div class='flex items-center gap-2'>
             <LocationIcon />
-            <p class='text-sm'>Carrera 20 # 8b30, Popayán, Colombia</p>
+            <a
+              href='https://maps.app.goo.gl/VxfpQpZdFd9BUYUbA'
+              target='_blank'
+              class='text-sm text-local_title_primary hover:text-local_title_quaternary font-semibold'
+              >Cra. 20 #8b30, Popayán, Cauca</a
+            >
           </div>
         </div>
         <div>
@@ -79,3 +87,17 @@ import RowIcon from '@assets/icons/RowIcon.astro'
     </section>
   </div>
 </footer>
+
+<script type='module'>
+  var map = L.map('map').setView([2.4418883220175216, -76.6189952639966], 14)
+
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution:
+      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+  }).addTo(map)
+
+  L.marker([2.4418883220175216, -76.6189952639966])
+    .addTo(map)
+    .bindPopup('Salchipapas La 20')
+    .openPopup()
+</script>
