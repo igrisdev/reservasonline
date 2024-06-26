@@ -1,3 +1,81 @@
-<footer>
-  f
+---
+import LocationIcon from '@assets/icons/LocationIcon.astro'
+import PhoneIcon from '@assets/icons/PhoneIcon.astro'
+import EmailIcon from '@assets/icons/EmailIcon.astro'
+import ClockIcon from '@assets/icons/ClockIcon.astro'
+import WhatsAppIcon from '@assets/icons/WhatsAppIcon.astro'
+import FacebookIcon from '@assets/icons/FacebookIcon.astro'
+import RowIcon from '@assets/icons/RowIcon.astro'
+---
+
+<footer class='p-2 max-w-7xl mx-auto pb-10 relative'>
+  <a
+    href='#'
+    class='absolute bottom-2 right-4 flex items-center hover:text-local_background_quaternary'
+  >
+    <small>web desarrollada por igris.dev </small>
+    <RowIcon />
+  </a>
+  <h2 class='text-center text-2xl font-bold mb-4'>UBICACIÓN</h2>
+
+  <div>
+    <section class='h-40 bg-local_background_tertiary rounded-md mb-4'>
+    </section>
+
+    <section class='flex'>
+      <div class='flex flex-col flex-1 gap-6'>
+        <div>
+          <h3 class='text-xl font-bold mb-2'>DIRECCIÓN</h3>
+          <div class='flex items-center gap-2'>
+            <LocationIcon />
+            <p class='text-sm'>Carrera 20 # 8b30, Popayán, Colombia</p>
+          </div>
+        </div>
+        <div>
+          <h3 class='text-xl font-bold mb-2'>TELÉFONO</h3>
+          <div class='flex items-center gap-2'>
+            <PhoneIcon />
+            <p class='text-sm'>310 5213172</p>
+          </div>
+        </div>
+        <div>
+          <h3 class='text-xl font-bold mb-2'>CORREO ELECTRÓNICO</h3>
+          <div class='flex items-center gap-2'>
+            <EmailIcon />
+            <p class='text-sm'>waldemarsanchez2020@gmail.com</p>
+          </div>
+        </div>
+      </div>
+
+      <div class='flex flex-col flex-1 gap-6'>
+        <div>
+          <h3 class='text-xl font-bold mb-2'>HORAS DE ATENCIÓN</h3>
+          <div class='flex items-center gap-8'>
+            <div>
+              <h4>Lunes a Viernes</h4>
+              <div class='flex items-center'>
+                <ClockIcon />
+                <p class='text-sm'>6pm a 12 pm</p>
+              </div>
+            </div>
+
+            <div>
+              <h4>Sábados y Domingos</h4>
+              <div class='flex items-center'>
+                <ClockIcon />
+                <p class='text-sm'>6pm a 12 pm</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3 class='text-xl font-bold mb-2'>REDES SOCIALES</h3>
+          <div class='flex items-center gap-2'>
+            <FacebookIcon />
+            <WhatsAppIcon />
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 </footer>
