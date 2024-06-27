@@ -1,14 +1,130 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import Header from '@sections/header/Header.astro'
-import AboutUs from '@sections/aboutUs/AboutUs.astro'
-import Specialties from '@sections/specialties/Specialties.astro'
-import Location from '@sections/location/Location.astro'
+import LocationBigIcon from '@assets/icons/LocationBigIcon.astro'
 ---
 
 <Layout title='Pedir en linea - Salchipapas La 20'>
-  nueva pagina
-  <main></main>
+  <header class='absolute w-full top-0'>
+    <div class='absolute w-full top-0 -z-10'>
+      <img
+        src='/portada.webp'
+        alt='portada'
+        class='w-full h-64 object-cover blur-2xl'
+      />
+    </div>
+
+    <div
+      class='flex items-center p-4 text-local_title_tertiary font-bold text-[40px] max-w-7xl mx-auto'
+    >
+      <LocationBigIcon />
+      <h1>Popayán</h1>
+    </div>
+  </header>
+
+  <main class='max-w-7xl mx-auto mt-40 min-h-[200vh] relative'>
+    <section class='grid grid-cols-4 gap-4 p-4 h-full'>
+      <div class='h-full lg:col-span-3 col-span-4'>
+        <section
+          class='bg-local_background_primary rounded-xl rounded-tr-[70px] h-72 shadow-xl p-6 flex flex-col justify-between'
+        >
+          <div class='flex justify-between items-center'>
+            <div>icono</div>
+
+            <button
+              class='bg-local_background_secondary rounded-full h-10 p-2 flex gap-2 text-local_text_primary'
+            >
+              Información del establecimiento
+            </button>
+          </div>
+
+          <h1 class='text-4xl font-bold'>Salchipapas La 20</h1>
+
+          <div>iconos</div>
+        </section>
+
+        <section class='mt-8 flex gap-4'>
+          <div class='flex flex-col gap-2'>
+            <header
+              class='flex gap-2 items-center text-xl text-local_title_secondary font-bold'
+            >
+              <div>-</div>
+              <h3>Especialidades</h3>
+            </header>
+            <main>
+              <ul class='mt-4 font-bold'>
+                <li class='py-5 border-b-2'>
+                  <a href='#'>Lo mas vendido</a>
+                </li>
+                <li class='py-5 border-b-2 text-local_title_secondary'>
+                  <a href='#especialidad-salchipapas'>Salchipapas</a>
+                </li>
+              </ul>
+            </main>
+          </div>
+
+          <div class='flex flex-col gap-4 w-full'>
+            <header class='flex gap-2 items-center relative'>
+              <div class='absolute left-4 text-local_subtitle_secondary'>Q</div>
+              <input
+                type='text'
+                class='bg-local_background_tertiary w-full p-2 pl-10 rounded-full'
+                placeholder='Busca tu planto'
+              />
+            </header>
+            <main>
+              <section id='especialidad-salchipapas'>
+                <h2>Salchipapas</h2>
+
+                <div class='especialidades'>
+                  <article
+                    class='border-2 border-local_border_primary p-4 rounded-lg'
+                  >
+                    <div class='flex gap-4'>
+                      <div>
+                        <img
+                          src=''
+                          alt=''
+                        />
+                      </div>
+
+                      <div>
+                        <h3 class='font-bold'>Salchipapas</h3>
+
+                        <p class='text-sm'>
+                          Lorem ipsum, dolor sit amet consectetur adipisicing
+                          elit.
+                        </p>
+                      </div>
+                    </div>
+                    <div class='flex justify-between items-center'>
+                      <span>$ 6.000</span>
+                      <div class='bg-local_background_quaternary w-min'>+</div>
+                    </div>
+                  </article>
+                </div>
+              </section>
+            </main>
+          </div>
+        </section>
+      </div>
+
+      <div class='h-full relative hidden lg:block'>
+        <article
+          class='sticky top-0 bg-local_background_primary h-[450px] rounded-xl shadow-xl p-4 py-8'
+        >
+          <h2 class='text-center text-2xl font-bold'>Tu pedido</h2>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer></footer>
 </Layout>
 
-<style></style>
+<style>
+  .especialidades {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
+    gap: 10px;
+  }
+</style>
