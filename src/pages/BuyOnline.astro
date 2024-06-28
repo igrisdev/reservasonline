@@ -15,7 +15,7 @@ const listaEspecialidades = [
     href: '#especialidad-hamburguesas',
   },
   {
-    name: 'Perros Calientes',
+    name: 'PerrosCalientes',
     href: '#especialidad-perros-calientes',
   },
   {
@@ -61,29 +61,62 @@ const specialties = [
 ---
 
 <Layout title='Pedir en linea - Salchipapas La 20'>
-  <header class='absolute w-full top-0'>
-    <div class='absolute w-full top-0 -z-10'>
-      <img
-        src='/portada.webp'
-        alt='portada'
-        class='w-full h-64 object-cover blur-2xl'
-      />
+  <header class=''>
+    <div class='absolute w-full top-0 hidden sm:block'>
+      <div class='absolute w-full top-0 -z-10'>
+        <img
+          src='/portada.webp'
+          alt='portada'
+          class='w-full h-64 object-cover blur-2xl'
+        />
+      </div>
+
+      <a
+        href='/'
+        class='flex items-center p-4 text-local_title_tertiary font-bold text-[40px] max-w-7xl mx-auto'
+      >
+        <LocationBigIcon />
+        <h1>Popayán</h1>
+      </a>
     </div>
 
-    <a
-      href='/'
-      class='flex items-center p-4 text-local_title_tertiary font-bold text-[40px] max-w-7xl mx-auto'
-    >
-      <LocationBigIcon />
-      <h1>Popayán</h1>
-    </a>
+    <div class='relative block sm:hidden'>
+      <div class='flex items-center justify-between p-2'>
+        <a
+          href='/'
+          class='w-12 h-8 text-local_subtitle_secondary flex items-center justify-center'
+        >
+          v
+        </a>
+
+        <h1>Salchipapas La 20</h1>
+
+        <button
+          class='bg-local_background_tertiary w-12 h-8 text-center text-local_subtitle_secondary rounded-full'
+        >
+          Q
+        </button>
+      </div>
+
+      <div>
+        <ul class='flex gap-2 overflow-x-auto text-sm px-4 justify-center'>
+          {
+            listaEspecialidades.map(({ name, href }) => (
+              <li class=''>
+                <a href={href}>{name}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
   </header>
 
-  <main class='max-w-7xl mx-auto mt-40 min-h-[200vh] relative'>
+  <main class='max-w-7xl mx-auto sm:mt-40 min-h-[200vh] relative'>
     <section class='grid grid-cols-4 gap-4 p-4 h-full'>
       <div class='h-full lg:col-span-3 col-span-4'>
         <section
-          class='bg-local_background_primary rounded-xl rounded-tr-[70px] h-72 shadow-xl p-6 flex flex-col justify-between'
+          class='bg-local_background_primary rounded-xl rounded-tr-[70px] h-72 shadow-xl p-6 flex-col justify-between hidden sm:flex'
         >
           <div class='flex justify-between items-center'>
             <div>icono</div>
@@ -100,8 +133,8 @@ const specialties = [
           <div>iconos</div>
         </section>
 
-        <section class='mt-8 grid grid-cols-5 gap-4 relative'>
-          <div class='sticky top-0 flex flex-col gap-2 h-min'>
+        <section class='sm:mt-8 grid grid-cols-5 gap-4 relative'>
+          <div class='sticky top-0 flex-col gap-2 h-min hidden md:flex'>
             <header
               class='flex gap-2 items-center text-xl text-local_title_secondary font-bold'
             >
@@ -123,8 +156,8 @@ const specialties = [
             </main>
           </div>
 
-          <div class='col-span-4 flex flex-col gap-4 w-full'>
-            <header class='flex gap-2 items-center relative'>
+          <div class='col-span-5 md:col-span-4 flex flex-col gap-4 w-full'>
+            <header class='gap-2 items-center relative hidden md:flex'>
               <div class='absolute left-4 text-local_subtitle_secondary'>Q</div>
               <input
                 type='text'
@@ -134,18 +167,9 @@ const specialties = [
             </header>
 
             <main class='flex flex-col gap-4'>
-              <!-- {
-                specialties.map((specialty) => {
-                  console.log(specialty);
-
-                  return (
-                    <section id={specialty.}></section>
-                  )
-                })
-              } -->
               <section
                 id='especialidad-salchipapas'
-                class='pt-4'
+                class='sm:pt-4'
               >
                 <h2 class='text-3xl font-bold mb-3'>Salchipapas</h2>
 
