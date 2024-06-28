@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import LocationBigIcon from '@assets/icons/LocationBigIcon.astro'
+
+import SalchipapaSencilla from '@assets/imagesSalchipapas/salchipapa-original.webp'
 ---
 
 <Layout title='Pedir en linea - Salchipapas La 20'>
@@ -42,8 +44,8 @@ import LocationBigIcon from '@assets/icons/LocationBigIcon.astro'
           <div>iconos</div>
         </section>
 
-        <section class='mt-8 flex gap-4'>
-          <div class='flex flex-col gap-2'>
+        <section class='mt-8 grid grid-cols-5 gap-4 relative'>
+          <div class='sticky top-0 flex flex-col gap-2 h-min'>
             <header
               class='flex gap-2 items-center text-xl text-local_title_secondary font-bold'
             >
@@ -62,7 +64,7 @@ import LocationBigIcon from '@assets/icons/LocationBigIcon.astro'
             </main>
           </div>
 
-          <div class='flex flex-col gap-4 w-full'>
+          <div class='col-span-4 flex flex-col gap-4 w-full'>
             <header class='flex gap-2 items-center relative'>
               <div class='absolute left-4 text-local_subtitle_secondary'>Q</div>
               <input
@@ -71,9 +73,9 @@ import LocationBigIcon from '@assets/icons/LocationBigIcon.astro'
                 placeholder='Busca tu planto'
               />
             </header>
-            <main>
+            <main class='mt-4 flex flex-col gap-4'>
               <section id='especialidad-salchipapas'>
-                <h2>Salchipapas</h2>
+                <h2 class='text-3xl font-bold mb-3'>Salchipapas</h2>
 
                 <div class='especialidades'>
                   <article
@@ -81,24 +83,107 @@ import LocationBigIcon from '@assets/icons/LocationBigIcon.astro'
                   >
                     <div class='flex gap-4'>
                       <div>
-                        <img
-                          src=''
-                          alt=''
-                        />
+                        <div class='overflow-hidden rounded-md'>
+                          <img
+                            src={SalchipapaSencilla.src}
+                            alt=''
+                            class='w-full h-full object-cover'
+                          />
+                        </div>
                       </div>
 
-                      <div>
-                        <h3 class='font-bold'>Salchipapas</h3>
+                      <div class='flex flex-col justify-between'>
+                        <div>
+                          <h3 class='font-bold'>Salchipapa Sencilla</h3>
 
-                        <p class='text-sm'>
-                          Lorem ipsum, dolor sit amet consectetur adipisicing
-                          elit.
-                        </p>
+                          <p class='text-sm'>
+                            Lorem ipsum, dolor sit amet consectetur adipisicing
+                            elit.
+                          </p>
+                        </div>
+
+                        <div class='mt-4'>iconos</div>
                       </div>
                     </div>
-                    <div class='flex justify-between items-center'>
+                    <div class='flex justify-between items-center mt-4'>
                       <span>$ 6.000</span>
-                      <div class='bg-local_background_quaternary w-min'>+</div>
+                      <button
+                        class='bg-local_background_quaternary/30 font-bold text-2xl rounded-full size-8 text-center text-local_title_secondary'
+                      >
+                        +
+                      </button>
+                    </div>
+                  </article>
+                  <article
+                    class='border-2 border-local_border_primary p-4 rounded-lg'
+                  >
+                    <div class='flex gap-4'>
+                      <div>
+                        <div class='overflow-hidden rounded-md'>
+                          <img
+                            src={SalchipapaSencilla.src}
+                            alt=''
+                            class='w-full h-full object-cover'
+                          />
+                        </div>
+                      </div>
+
+                      <div class='flex flex-col justify-between'>
+                        <div>
+                          <h3 class='font-bold'>Salchipapa Sencilla</h3>
+
+                          <p class='text-sm'>
+                            Lorem ipsum, dolor sit amet consectetur adipisicing
+                            elit.
+                          </p>
+                        </div>
+
+                        <div class='mt-4'>iconos</div>
+                      </div>
+                    </div>
+                    <div class='flex justify-between items-center mt-4'>
+                      <span>$ 6.000</span>
+                      <button
+                        class='bg-local_background_quaternary/30 font-bold text-2xl rounded-full size-8 text-center text-local_title_secondary'
+                      >
+                        +
+                      </button>
+                    </div>
+                  </article>
+                  <article
+                    class='border-2 border-local_border_primary p-4 rounded-lg'
+                  >
+                    <div class='flex gap-4'>
+                      <div>
+                        <div class='overflow-hidden rounded-md'>
+                          <img
+                            src={SalchipapaSencilla.src}
+                            alt=''
+                            class='w-full h-full object-cover'
+                          />
+                        </div>
+                      </div>
+
+                      <div class='flex flex-col justify-between'>
+                        <div>
+                          <h3 class='font-bold'>Salchipapa Sencilla</h3>
+
+                          <p class='text-sm'>
+                            Lorem ipsum, dolor sit amet consectetur adipisicing
+                            elit.
+                          </p>
+                        </div>
+
+                        <div class='mt-4'>iconos</div>
+                      </div>
+                    </div>
+                    <div class='flex justify-between items-center mt-4'>
+                      <span>$ 6.000</span>
+                      <button
+                        class='bg-local_background_quaternary/30 font-bold text-2xl rounded-full size-8 text-center text-local_title_secondary'
+                      >
+                        +
+                      </button>
                     </div>
                   </article>
                 </div>
@@ -124,7 +209,7 @@ import LocationBigIcon from '@assets/icons/LocationBigIcon.astro'
 <style>
   .especialidades {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(350px, 100%), 1fr));
     gap: 10px;
   }
 </style>
