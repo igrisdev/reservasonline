@@ -5,6 +5,8 @@ import LocationBigIcon from '@assets/icons/LocationBigIcon.astro'
 import SalchipapaSencilla from '@assets/imagesSalchipapas/salchipapa-original.webp'
 import HamburguesaSencilla from '@assets/imagesHamburguesas/hamburguesa-sencilla.webp'
 
+import CartSpecialties from '@components/buyOnline/CartSpecialties.astro'
+
 const listaEspecialidades = [
   {
     name: 'Salchipapas',
@@ -28,7 +30,7 @@ const listaEspecialidades = [
   },
 ]
 
-const specialties = [
+export const specialties = [
   {
     salchipapas: [
       {
@@ -173,115 +175,11 @@ const specialties = [
               >
                 <h2 class='text-3xl font-bold mb-3'>Salchipapas</h2>
 
-                <div class='especialidades'>
-                  <article
-                    class='border-2 border-local_border_primary p-4 rounded-lg'
-                  >
-                    <div class='flex gap-4'>
-                      <div>
-                        <div class='overflow-hidden rounded-md'>
-                          <img
-                            src={SalchipapaSencilla.src}
-                            alt=''
-                            class='w-full h-full object-cover'
-                          />
-                        </div>
-                      </div>
-
-                      <div class='flex flex-col justify-between'>
-                        <div>
-                          <h3 class='font-bold'>Salchipapa Sencilla</h3>
-
-                          <p class='text-sm'>
-                            Lorem ipsum, dolor sit amet consectetur adipisicing
-                            elit.
-                          </p>
-                        </div>
-
-                        <div class='mt-4'>iconos</div>
-                      </div>
-                    </div>
-                    <div class='flex justify-between items-center mt-4'>
-                      <span>$ 6.000</span>
-                      <button
-                        class='bg-local_background_quaternary/30 font-bold text-2xl rounded-full size-8 text-center text-local_title_secondary'
-                      >
-                        +
-                      </button>
-                    </div>
-                  </article>
-                  <article
-                    class='border-2 border-local_border_primary p-4 rounded-lg'
-                  >
-                    <div class='flex gap-4'>
-                      <div>
-                        <div class='overflow-hidden rounded-md'>
-                          <img
-                            src={SalchipapaSencilla.src}
-                            alt=''
-                            class='w-full h-full object-cover'
-                          />
-                        </div>
-                      </div>
-
-                      <div class='flex flex-col justify-between'>
-                        <div>
-                          <h3 class='font-bold'>Salchipapa Sencilla</h3>
-
-                          <p class='text-sm'>
-                            Lorem ipsum, dolor sit amet consectetur adipisicing
-                            elit.
-                          </p>
-                        </div>
-
-                        <div class='mt-4'>iconos</div>
-                      </div>
-                    </div>
-                    <div class='flex justify-between items-center mt-4'>
-                      <span>$ 6.000</span>
-                      <button
-                        class='bg-local_background_quaternary/30 font-bold text-2xl rounded-full size-8 text-center text-local_title_secondary'
-                      >
-                        +
-                      </button>
-                    </div>
-                  </article>
-                  <article
-                    class='border-2 border-local_border_primary p-4 rounded-lg'
-                  >
-                    <div class='flex gap-4'>
-                      <div>
-                        <div class='overflow-hidden rounded-md'>
-                          <img
-                            src={SalchipapaSencilla.src}
-                            alt=''
-                            class='w-full h-full object-cover'
-                          />
-                        </div>
-                      </div>
-
-                      <div class='flex flex-col justify-between'>
-                        <div>
-                          <h3 class='font-bold'>Salchipapa Sencilla</h3>
-
-                          <p class='text-sm'>
-                            Lorem ipsum, dolor sit amet consectetur adipisicing
-                            elit.
-                          </p>
-                        </div>
-
-                        <div class='mt-4'>iconos</div>
-                      </div>
-                    </div>
-                    <div class='flex justify-between items-center mt-4'>
-                      <span>$ 6.000</span>
-                      <button
-                        class='bg-local_background_quaternary/30 font-bold text-2xl rounded-full size-8 text-center text-local_title_secondary'
-                      >
-                        +
-                      </button>
-                    </div>
-                  </article>
+                <div
+                  id='especialidades'
+                  class='especialidades'
+                >
+                  <CartSpecialties />
                 </div>
               </section>
             </main>

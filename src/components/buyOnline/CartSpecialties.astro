@@ -1,0 +1,37 @@
+---
+import SalchipapaSencilla from '@assets/imagesSalchipapas/salchipapa-original.webp'
+---
+
+<article class='border-2 border-local_border_primary p-4 rounded-lg'>
+  <div class='flex gap-4'>
+    <div>
+      <div class='overflow-hidden rounded-md'>
+        <img
+          src={SalchipapaSencilla.src}
+          alt=''
+          class='w-full h-full object-cover'
+        />
+      </div>
+    </div>
+
+    <div class='flex flex-col justify-between'>
+      <div>
+        <h3 class='font-bold'>Salchipapa Sencilla</h3>
+
+        <p class='text-sm'>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+        </p>
+      </div>
+
+      <div class='mt-4'>iconos</div>
+    </div>
+  </div>
+  <div class='flex justify-between items-center mt-4'>
+    <span>$ 6.000</span>
+    <button
+      class='bg-local_background_quaternary/30 font-bold text-2xl rounded-full size-8 text-center text-local_title_secondary'
+    >
+      +
+    </button>
+  </div>
+</article>
