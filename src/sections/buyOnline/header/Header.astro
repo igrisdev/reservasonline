@@ -1,0 +1,60 @@
+---
+import LocationBigIcon from '@assets/icons/LocationBigIcon.astro'
+
+interface Props {
+  listaEspecialidades: any[]
+}
+
+const { listaEspecialidades } = Astro.props
+---
+
+<header class=''>
+  <div class='absolute w-full top-0 hidden sm:block'>
+    <div class='absolute w-full top-0 -z-10'>
+      <img
+        src='/portada.webp'
+        alt='portada'
+        class='w-full h-64 object-cover blur-2xl'
+      />
+    </div>
+
+    <a
+      href='/'
+      class='flex items-center p-4 text-local_title_tertiary font-bold text-[40px] max-w-7xl mx-auto'
+    >
+      <LocationBigIcon />
+      <h1>Popayán</h1>
+    </a>
+  </div>
+
+  <div class='relative block sm:hidden'>
+    <div class='flex items-center justify-between p-2'>
+      <a
+        href='/'
+        class='w-12 h-8 text-local_subtitle_secondary flex items-center justify-center'
+      >
+        v
+      </a>
+
+      <h1>Salchipapas La 20</h1>
+
+      <button
+        class='bg-local_background_tertiary w-12 h-8 text-center text-local_subtitle_secondary rounded-full'
+      >
+        Q
+      </button>
+    </div>
+
+    <div>
+      <ul class='flex gap-2 overflow-x-auto text-sm px-4 justify-center'>
+        {
+          listaEspecialidades.map(({ name, href }) => (
+            <li class=''>
+              <a href={href}>{name}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</header>
