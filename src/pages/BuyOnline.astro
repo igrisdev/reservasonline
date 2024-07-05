@@ -1,6 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import LocationBigIcon from '@assets/icons/LocationBigIcon.astro'
+import Header from '@sections/buyOnline/header/Header.astro'
+
+import HamburgerIcon from '@assets/icons/HamburgerIcon.astro'
+import InfoIcon from '@assets/icons/InfoIcon.astro'
+import BigLikeIcon from '@assets/icons/BigLikeIcon.astro'
+import BigClockIcon from '@assets/icons/BigClockIcon.astro'
+import BigPeopleIcon from '@assets/icons/BigPeopleIcon.astro'
 
 import SalchipapaSencilla from '@assets/imagesSalchipapas/salchipapa-original.webp'
 import HamburguesaSencilla from '@assets/imagesHamburguesas/hamburguesa-sencilla.webp'
@@ -75,82 +81,60 @@ export const specialties = [
 ---
 
 <Layout title='Pedir en linea - Salchipapas La 20'>
-  <header class=''>
-    <div class='absolute w-full top-0 hidden sm:block'>
-      <div class='absolute w-full top-0 -z-10'>
-        <img
-          src='/portada.webp'
-          alt='portada'
-          class='w-full h-64 object-cover blur-2xl'
-        />
-      </div>
+  <dialog
+    id='dialog-information'
+    class=''
+  >
+    información pendiente
+  </dialog>
 
-      <a
-        href='/'
-        class='flex items-center p-4 text-local_title_tertiary font-bold text-[40px] max-w-7xl mx-auto'
-      >
-        <LocationBigIcon />
-        <h1>Popayán</h1>
-      </a>
-    </div>
+  <Header listaEspecialidades={listaEspecialidades} />
 
-    <div class='relative block sm:hidden'>
-      <div class='flex items-center justify-between p-2'>
-        <a
-          href='/'
-          class='w-12 h-8 text-local_subtitle_secondary flex items-center justify-center'
-        >
-          v
-        </a>
-
-        <h1>Salchipapas La 20</h1>
-
-        <button
-          class='bg-local_background_tertiary w-12 h-8 text-center text-local_subtitle_secondary rounded-full'
-        >
-          Q
-        </button>
-      </div>
-
-      <div>
-        <ul class='flex gap-2 overflow-x-auto text-sm px-4 justify-center'>
-          {
-            listaEspecialidades.map(({ name, href }) => (
-              <li class=''>
-                <a href={href}>{name}</a>
-              </li>
-            ))
-          }
-        </ul>
-      </div>
-    </div>
-  </header>
-
-  <main class='max-w-7xl mx-auto sm:mt-40 min-h-[200vh] relative'>
+  <main class='max-w-7xl mx-auto sm:mt-40 relative'>
     <section class='grid grid-cols-4 gap-4 p-4 h-full'>
       <div class='h-full lg:col-span-3 col-span-4'>
         <section
           class='bg-local_background_primary rounded-xl rounded-tr-[70px] h-72 shadow-xl p-6 flex-col justify-between hidden sm:flex'
         >
           <div class='flex justify-between items-center'>
-            <div>icono</div>
+            <div>
+              <HamburgerIcon />
+            </div>
 
             <button
-              class='bg-local_background_secondary rounded-full h-10 p-2 flex gap-2 text-local_text_primary'
+              id='button-dialog-information'
+              class='bg-local_background_secondary rounded-full h-10 p-2 flex gap-2 text-local_text_primary items-center'
             >
+              <InfoIcon />
               Información del establecimiento
             </button>
           </div>
 
           <h1 class='text-4xl font-bold'>Salchipapas La 20</h1>
 
-          <div>iconos</div>
+          <div class='flex gap-4'>
+            <div class='text-center font-bold'>
+              <BigLikeIcon />
+              <span>98 %</span>
+            </div>
+            <div class='text-center font-bold'>
+              <BigClockIcon />
+              <span>77%</span>
+            </div>
+            <div class='text-center font-bold'>
+              <BigPeopleIcon />
+              <span># 10</span>
+            </div>
+          </div>
         </section>
 
         <section class='sm:mt-8 grid grid-cols-5 gap-4 relative'>
-          <div class='sticky top-0 flex-col gap-2 h-min hidden md:flex'>
+          <div
+            id='sidebar-especialidades'
+            class='sticky top-0 flex-col gap-2 h-min hidden md:flex'
+          >
             <header
-              class='flex gap-2 items-center text-xl text-local_title_secondary font-bold'
+              class='flex gap-2 items-center text-md text-local_title_secondary font-bold'
             >
               <div>-</div>
               <h3>Especialidades</h3>
@@ -180,7 +164,7 @@ export const specialties = [
               />
             </header>
 
-            <main class='flex flex-col gap-4'>
+            <main class='flex flex-col gap-4 mt-28 sm:mt-0'>
               <section
                 id='especialidad-salchipapas'
                 class='sm:pt-4'
@@ -209,7 +193,7 @@ export const specialties = [
               </section>
               <section
                 id='especialidad-hamburguesas'
-                class='sm:pt-4'
+                class='sm:pt-4 min-h-[200vh]'
               >
                 <h2 class='text-3xl font-bold mb-3'>Hamburguesas</h2>
 
@@ -257,4 +241,37 @@ export const specialties = [
     grid-template-columns: repeat(auto-fill, minmax(min(350px, 100%), 1fr));
     gap: 10px;
   }
+
+  #dialog-information {
+  }
 </style>
+
+<script>
+  const sidebarEspecialidades = document.getElementById(
+    'sidebar-especialidades'
+  ) as HTMLDivElement
+  console.log(window.innerWidth)
+
+  window.addEventListener('scroll', () => {
+    console.log(window.innerHeight)
+    console.log(window.scrollY)
+    if (window.scrollY > 460) {
+      sidebarEspecialidades.style.paddingTop = '100px'
+    } else {
+      sidebarEspecialidades.style.paddingTop = '0'
+    }
+  })
+</script>
+
+<script>
+  const dialogInformation = document.getElementById(
+    'dialog-information'
+  ) as HTMLDialogElement
+  const buttonDialogInformation = document.getElementById(
+    'button-dialog-information'
+  ) as HTMLButtonElement
+
+  // buttonDialogInformation.addEventListener('click', () => {
+  //   dialogInformation.showModal()
+  // })
+</script>

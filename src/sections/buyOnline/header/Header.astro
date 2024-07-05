@@ -1,5 +1,7 @@
 ---
 import LocationBigIcon from '@assets/icons/LocationBigIcon.astro'
+import SearchIcon from '@assets/icons/SearchIcon.astro'
+import RowBackIcon from '@assets/icons/RowBackIcon.astro'
 
 interface Props {
   listaEspecialidades: any[]
@@ -27,26 +29,28 @@ const { listaEspecialidades } = Astro.props
     </a>
   </div>
 
-  <div class='relative block sm:hidden'>
-    <div class='flex items-center justify-between p-2'>
+  <div class='fixed block sm:hidden w-full z-20 bg-local_background_primary'>
+    <div class='flex items-center justify-between px-4 py-6'>
       <a
         href='/'
-        class='w-12 h-8 text-local_subtitle_secondary flex items-center justify-center'
+        class='text-local_subtitle_secondary flex items-center justify-center'
       >
-        v
+        <RowBackIcon />
       </a>
 
-      <h1>Salchipapas La 20</h1>
+      <h1 class='text-3xl font-bold'>Salchipapas La 20</h1>
 
       <button
-        class='bg-local_background_tertiary w-12 h-8 text-center text-local_subtitle_secondary rounded-full'
+        class='bg-local_background_tertiary text-center text-local_subtitle_secondary rounded-full px-3 py-1'
       >
-        Q
+        <div class='scale-75'>
+          <SearchIcon />
+        </div>
       </button>
     </div>
 
     <div>
-      <ul class='flex gap-2 overflow-x-auto text-sm px-4 justify-center'>
+      <ul class='flex gap-4 overflow-x-auto px-4 justify-center'>
         {
           listaEspecialidades.map(({ name, href }) => (
             <li class=''>
