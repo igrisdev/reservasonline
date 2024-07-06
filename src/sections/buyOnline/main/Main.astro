@@ -4,6 +4,7 @@ import InfoIcon from '@assets/icons/InfoIcon.astro'
 import BigLikeIcon from '@assets/icons/BigLikeIcon.astro'
 import BigClockIcon from '@assets/icons/BigClockIcon.astro'
 import BigPeopleIcon from '@assets/icons/BigPeopleIcon.astro'
+import BigCartIcon from '@assets/icons/BigCartIcon.astro'
 
 import CartSpecialties from '@components/buyOnline/CartSpecialties.astro'
 
@@ -152,9 +153,23 @@ const { listaEspecialidades, specialties } = Astro.props
       class='h-full relative hidden lg:block'
     >
       <article
-        class='sticky top-0 bg-local_background_primary h-[450px] rounded-xl shadow-xl p-4 py-8'
+        class='sticky top-0 bg-local_background_primary h-[450px] rounded-xl shadow-xl p-4 py-8 flex flex-col justify-between items-center'
       >
-        <h2 class='text-center text-2xl font-bold'>Tu pedido</h2>
+        <h2 class='text-2xl font-bold'>Tu pedido</h2>
+
+        <div>
+          <BigCartIcon />
+        </div>
+
+        <div class='text-center'>
+          <small class='block'
+            >Todavía no has añadido ningún producto. Cuando lo hagas <br /> ¡veras
+            los productos aquí!</small
+          >
+          <span class='block mt-4 text-sm font-bold'>
+            El precio del envío corre por tu cuenta
+          </span>
+        </div>
       </article>
     </div>
   </section>
