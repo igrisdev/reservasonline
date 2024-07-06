@@ -1,0 +1,204 @@
+---
+import HamburgerIcon from '@assets/icons/HamburgerIcon.astro'
+import InfoIcon from '@assets/icons/InfoIcon.astro'
+import BigLikeIcon from '@assets/icons/BigLikeIcon.astro'
+import BigClockIcon from '@assets/icons/BigClockIcon.astro'
+import BigPeopleIcon from '@assets/icons/BigPeopleIcon.astro'
+
+import CartSpecialties from '@components/buyOnline/CartSpecialties.astro'
+
+interface Props {
+  listaEspecialidades: any[]
+  specialties: any[]
+}
+
+const { listaEspecialidades, specialties } = Astro.props
+---
+
+<main class='max-w-7xl mx-auto sm:mt-40 relative'>
+  <section class='grid grid-cols-4 gap-4 p-4 h-full'>
+    <div class='h-full lg:col-span-3 col-span-4'>
+      <section
+        class='bg-local_background_primary rounded-xl rounded-tr-[70px] h-72 shadow-xl p-6 flex-col justify-between hidden sm:flex'
+      >
+        <div class='flex justify-between items-center'>
+          <div>
+            <HamburgerIcon />
+          </div>
+
+          <button
+            id='button-dialog-information'
+            class='bg-local_background_secondary rounded-full h-10 p-2 flex gap-2 text-local_text_primary items-center'
+          >
+            <InfoIcon />
+            Información del establecimiento
+          </button>
+        </div>
+
+        <h1 class='text-4xl font-bold'>Salchipapas La 20</h1>
+
+        <div class='flex gap-4'>
+          <div class='text-center font-bold'>
+            <BigLikeIcon />
+            <span>98 %</span>
+          </div>
+          <div class='text-center font-bold'>
+            <BigClockIcon />
+            <span>77%</span>
+          </div>
+          <div class='text-center font-bold'>
+            <BigPeopleIcon />
+            <span># 10</span>
+          </div>
+        </div>
+      </section>
+
+      <section class='sm:mt-8 grid grid-cols-5 gap-4 relative'>
+        <div
+          id='sidebar-especialidades'
+          class='sticky top-0 flex-col gap-2 h-min hidden md:flex'
+        >
+          <header
+            class='flex gap-2 items-center text-md text-local_title_secondary font-bold'
+          >
+            <div>-</div>
+            <h3>Especialidades</h3>
+          </header>
+          <main>
+            <ul class='mt-4'>
+              {
+                listaEspecialidades.map(
+                  ({ name, href }: { name: string; href: string }) => (
+                    <li class='py-5 border-b-2'>
+                      <a href={href}>{name}</a>
+                    </li>
+                  )
+                )
+              }
+            </ul>
+          </main>
+        </div>
+
+        <div class='col-span-5 md:col-span-4 flex flex-col gap-4 w-full'>
+          <header class='gap-2 items-center relative hidden md:flex'>
+            <div class='absolute left-4 text-local_subtitle_secondary'>Q</div>
+            <input
+              type='text'
+              class='bg-local_background_tertiary w-full p-2 pl-10 rounded-full'
+              placeholder='Busca tu planto'
+            />
+          </header>
+
+          <main class='flex flex-col gap-4 mt-28 sm:mt-0'>
+            <section
+              id='especialidad-salchipapas'
+              class='sm:pt-4'
+            >
+              <h2 class='text-3xl font-bold mb-3'>Salchipapas</h2>
+
+              <div
+                id='especialidades'
+                class='especialidades'
+              >
+                {
+                  specialties.map(({ salchipapas }): any => {
+                    return salchipapas?.map(
+                      ({ image, name, description, price }) => (
+                        <CartSpecialties
+                          image={image}
+                          name={name}
+                          description={description}
+                          price={price}
+                        />
+                      )
+                    )
+                  })
+                }
+              </div>
+            </section>
+            <section
+              id='especialidad-hamburguesas'
+              class='sm:pt-4 min-h-[200vh]'
+            >
+              <h2 class='text-3xl font-bold mb-3'>Hamburguesas</h2>
+
+              <div
+                id='especialidades'
+                class='especialidades'
+              >
+                {
+                  specialties.map(({ hamburguesas }): any => {
+                    return hamburguesas?.map(
+                      ({ image, name, description, price }) => (
+                        <CartSpecialties
+                          image={image}
+                          name={name}
+                          description={description}
+                          price={price}
+                        />
+                      )
+                    )
+                  })
+                }
+              </div>
+            </section>
+          </main>
+        </div>
+      </section>
+    </div>
+
+    <div
+      id='card-buy'
+      class='h-full relative hidden lg:block'
+    >
+      <article
+        class='sticky top-0 bg-local_background_primary h-[450px] rounded-xl shadow-xl p-4 py-8'
+      >
+        <h2 class='text-center text-2xl font-bold'>Tu pedido</h2>
+      </article>
+    </div>
+  </section>
+</main>
+
+<style>
+  .especialidades {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(350px, 100%), 1fr));
+    gap: 10px;
+  }
+
+  #dialog-information {
+  }
+</style>
+
+<script>
+  const sidebarEspecialidades = document.getElementById(
+    'sidebar-especialidades'
+  ) as HTMLDivElement
+  const cardBuy = document.getElementById('card-buy') as HTMLDivElement
+
+  console.log(window.innerWidth)
+
+  window.addEventListener('scroll', () => {
+    console.log(window.innerHeight)
+    console.log(window.scrollY)
+    if (window.scrollY > 460) {
+      sidebarEspecialidades.style.paddingTop = '100px'
+    } else {
+      sidebarEspecialidades.style.paddingTop = '0'
+    }
+  })
+</script>
+
+<script>
+  const dialogInformation = document.getElementById(
+    'dialog-information'
+  ) as HTMLDialogElement
+  const buttonDialogInformation = document.getElementById(
+    'button-dialog-information'
+  ) as HTMLButtonElement
+
+  // buttonDialogInformation.addEventListener('click', () => {
+  //   dialogInformation.showModal()
+  // })
+</script>
