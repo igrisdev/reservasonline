@@ -8,10 +8,31 @@ import BigCartIcon from '@assets/icons/BigCartIcon.astro'
 
 import CartSpecialties from '@components/buyOnline/CartSpecialties.astro'
 
-interface Props {
-  listaEspecialidades: any[]
-  specialties: any[]
+interface ListaEspecialidades {
+  name: string
+  href: string
 }
+
+/* interface Product {
+  id: number
+  name: string
+  description: string
+  image: string
+  price: string
+}
+
+interface Specialty {
+  [key: string]: Product[]
+}
+
+interface Specialties {
+  [index: number]: Specialty
+}
+
+interface Props {
+  listaEspecialidades: ListaEspecialidades[]
+  specialties: Specialties[]
+} */
 
 const { listaEspecialidades, specialties } = Astro.props
 ---
@@ -102,9 +123,9 @@ const { listaEspecialidades, specialties } = Astro.props
                 class='especialidades'
               >
                 {
-                  specialties.map(({ salchipapas }): any => {
+                  specialties.map(({ salchipapas }: any) => {
                     return salchipapas?.map(
-                      ({ image, name, description, price }) => (
+                      ({ image, name, description, price }: any) => (
                         <CartSpecialties
                           image={image}
                           name={name}
@@ -128,9 +149,9 @@ const { listaEspecialidades, specialties } = Astro.props
                 class='especialidades'
               >
                 {
-                  specialties.map(({ hamburguesas }): any => {
+                  specialties.map(({ hamburguesas }: any) => {
                     return hamburguesas?.map(
-                      ({ image, name, description, price }) => (
+                      ({ image, name, description, price }: any) => (
                         <CartSpecialties
                           image={image}
                           name={name}
