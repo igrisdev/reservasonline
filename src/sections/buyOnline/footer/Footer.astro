@@ -1,60 +1,112 @@
-<footer class='p-2 max-w-7xl mx-auto mb-10 relative'>
-  <section>
-    <div>+</div>
-    <h2>igris.dev</h2>
-  </section>
+---
+import LaptopIcon from '@assets/icons/LaptopIcon.astro'
+import RedIcon from '@assets/icons/RedIcon.astro'
+import BigPhoneIcon from '@assets/icons/BigPhoneIcon.astro'
+import FacebookIcon from '@assets/icons/FacebookIcon.astro'
+import InstagramIcon from '@assets/icons/InstagramIcon.astro'
+import LinkedInIcon from '@assets/icons/LinkedInIcon.astro'
+import WhatsAppIcon from '@assets/icons/WhatsAppIcon.astro'
+import BigEmailIcon from '@assets/icons/BigEmailIcon.astro'
+---
 
-  <section class='flex mt-4 justify-between'>
-    <div class='flex-1'>
-      <div>
-        <h3 class='text-lg font-bold mb-4'>PORTFOLIO</h3>
+<footer class='max-w-7xl mx-auto mb-10 relative p-4'>
+  <div class='p-4 shadow-lg'>
+    <section
+      class='flex items-center gap-2 text-2xl font-bold text-local_title_primary'
+    >
+      <LaptopIcon />
+      <h2>igris.dev</h2>
+    </section>
+
+    <section class='flex mt-4 justify-between flex-wrap gap-y-4'>
+      <div class='sm:flex-1 flex flex-col gap-4 min-w-60'>
+        <div>
+          <h3 class='text-lg font-bold mb-4'>PORTFOLIO</h3>
+
+          <div class='flex items-center gap-2'>
+            <RedIcon />
+            <a
+              href='https://portfolio-igrisdev.vercel.app/'
+              target='_blank'
+              class='hover:text-local_title_secondary'
+              rel='noopener noreferrer'
+            >
+              igris.dev web
+            </a>
+          </div>
+        </div>
 
         <div>
-          <div></div>
-          <a href=''>htt</a>
+          <h3 class='text-lg font-bold mb-4'>TELÉFONO</h3>
+
+          <div class='flex items-center gap-2'>
+            <BigPhoneIcon />
+            <p>317 878 4022</p>
+          </div>
         </div>
       </div>
 
-      <div>
-        <h3 class='text-lg font-bold mb-4'>TELÉFONO</h3>
+      <div class='sm:flex-1 flex flex-col gap-4'>
+        <div>
+          <h3 class='text-lg font-bold mb-4'>REDES SOCIALES</h3>
+
+          <div class='flex gap-2 text-local_background_quaternary'>
+            <a
+              href='http://'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              <FacebookIcon />
+            </a>
+            <a
+              href='http://'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              <InstagramIcon />
+            </a>
+            <a
+              href='http://'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              <LinkedInIcon />
+            </a>
+            <a
+              href='http://'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              <WhatsAppIcon />
+            </a>
+          </div>
+        </div>
 
         <div>
-          <div></div>
-          <p>310 5213172</p>
-        </div>
-      </div>
-    </div>
+          <h3 class='text-lg font-bold mb-4'>CORREO ELECTRÓNICO</h3>
 
-    <div class='flex-1'>
-      <div>
-        <h3 class='text-lg font-bold mb-4'>REDES SOCIALES</h3>
-
-        <div>
-          <div>F</div>
-          <div>W</div>
-          <div>L</div>
-          <div>I</div>
+          <div class='flex items-center gap-2 max-w-xs'>
+            <BigEmailIcon />
+            <a
+              href='mailto:johan.manuel.alvarez.pintado@gmail.com'
+              class='truncate'
+            >
+              johan.manuel.alvarez.pintado@gmail.com
+            </a>
+          </div>
         </div>
       </div>
 
-      <div>
-        <h3 class='text-lg font-bold mb-4'>CORREO ELECTRÓNICO</h3>
+      <div class='md:flex-1 md:min-w-80'>
+        <h3 class='text-lg font-bold mb-4'>Sobre Mi</h3>
 
-        <div>
-          <div></div>
-          <p>waldemarsanchez2020@gmail.com</p>
-        </div>
+        <p class='text-sm'>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non
+          risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec,
+          ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula
+          massa, varius
+        </p>
       </div>
-    </div>
-
-    <div class='flex-1'>
-      <h3>Sobre Mi</h3>
-
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus.
-        Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies
-        sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius
-      </p>
-    </div>
-  </section>
+    </section>
+  </div>
 </footer>
