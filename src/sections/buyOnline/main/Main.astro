@@ -92,7 +92,7 @@ const { listaEspecialidades, specialties } = Astro.props
                 listaEspecialidades.map(
                   ({ name, href }: { name: string; href: string }) => (
                     <li class='py-5 border-b-2'>
-                      <a href={href}>{name}</a>
+                      <a href={'#' + href}>{name}</a>
                     </li>
                   )
                 )
@@ -112,58 +112,44 @@ const { listaEspecialidades, specialties } = Astro.props
           </header>
 
           <main class='flex flex-col gap-4 mt-28 sm:mt-0'>
-            <section
-              id='especialidad-salchipapas'
-              class='sm:pt-4'
-            >
-              <h2 class='text-3xl font-bold mb-3'>Salchipapas</h2>
+            {
+              listaEspecialidades.map(({ id, name, href }: any) => {
+                const isSpecialty = specialties.some((item: any) =>
+                  Object.keys(item).includes(id)
+                )
 
-              <div
-                id='especialidades'
-                class='especialidades'
-              >
-                {
-                  specialties.map(({ salchipapas }: any) => {
-                    return salchipapas?.map(
-                      ({ image, name, description, price }: any) => (
-                        <CartSpecialties
-                          image={image}
-                          name={name}
-                          description={description}
-                          price={price}
-                        />
-                      )
-                    )
-                  })
-                }
-              </div>
-            </section>
-            <section
-              id='especialidad-hamburguesas'
-              class='sm:pt-4'
-            >
-              <h2 class='text-3xl font-bold mb-3'>Hamburguesas</h2>
+                if (!isSpecialty) return null
 
-              <div
-                id='especialidades'
-                class='especialidades'
-              >
-                {
-                  specialties.map(({ hamburguesas }: any) => {
-                    return hamburguesas?.map(
-                      ({ image, name, description, price }: any) => (
-                        <CartSpecialties
-                          image={image}
-                          name={name}
-                          description={description}
-                          price={price}
-                        />
-                      )
-                    )
-                  })
-                }
-              </div>
-            </section>
+                // console.log(id)
+
+                return (
+                  <section
+                    id={href}
+                    class='sm:pt-4'
+                  >
+                    <h2 class='text-3xl font-bold mb-3'>{name}</h2>
+
+                    <div
+                      id='especialidades'
+                      class='especialidades'
+                    >
+                      {specialties.map((specialty: any) => {
+                        return specialty[id]?.map(
+                          ({ image, name, description, price }: any) => (
+                            <CartSpecialties
+                              image={image}
+                              name={name}
+                              description={description}
+                              price={price}
+                            />
+                          )
+                        )
+                      })}
+                    </div>
+                  </section>
+                )
+              })
+            }
           </main>
         </div>
       </section>
