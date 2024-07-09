@@ -54,7 +54,7 @@ const { listaEspecialidades } = Astro.props
         {
           listaEspecialidades.map(({ name, href }) => (
             <li class=''>
-              <a href={href}>{name}</a>
+              <a href={'#' + href}>{name}</a>
             </li>
           ))
         }
