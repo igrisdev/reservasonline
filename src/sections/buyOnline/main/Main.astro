@@ -8,33 +8,10 @@ import BigCartIcon from '@assets/icons/BigCartIcon.astro'
 
 import CartSpecialties from '@components/buyOnline/CartSpecialties.astro'
 
-interface ListaEspecialidades {
-  name: string
-  href: string
-}
+import { $listaEspecialidades, $specialties } from '@store/Specialties'
 
-/* interface Product {
-  id: number
-  name: string
-  description: string
-  image: string
-  price: string
-}
-
-interface Specialty {
-  [key: string]: Product[]
-}
-
-interface Specialties {
-  [index: number]: Specialty
-}
-
-interface Props {
-  listaEspecialidades: ListaEspecialidades[]
-  specialties: Specialties[]
-} */
-
-const { listaEspecialidades, specialties } = Astro.props
+const { value: listaEspecialidades } = $listaEspecialidades
+const { value: specialties } = $specialties
 ---
 
 <main class='max-w-7xl mx-auto sm:mt-40 relative'>
@@ -89,7 +66,7 @@ const { listaEspecialidades, specialties } = Astro.props
           <main>
             <ul class='mt-4'>
               {
-                listaEspecialidades.map(
+                listaEspecialidades?.map(
                   ({ name, href }: { name: string; href: string }) => (
                     <li class='py-5 border-b-2'>
                       <a href={'#' + href}>{name}</a>
@@ -113,8 +90,8 @@ const { listaEspecialidades, specialties } = Astro.props
 
           <main class='flex flex-col gap-4 mt-28 sm:mt-0'>
             {
-              listaEspecialidades.map(({ id, name, href }: any) => {
-                const isSpecialty = specialties.some((item: any) =>
+              listaEspecialidades?.map(({ id, name, href }: any) => {
+                const isSpecialty = specialties?.some((item: any) =>
                   Object.keys(item).includes(id)
                 )
 
@@ -133,7 +110,7 @@ const { listaEspecialidades, specialties } = Astro.props
                       id='especialidades'
                       class='especialidades'
                     >
-                      {specialties.map((specialty: any) => {
+                      {specialties?.map((specialty: any) => {
                         return specialty[id]?.map(
                           ({ image, name, description, price }: any) => (
                             <CartSpecialties

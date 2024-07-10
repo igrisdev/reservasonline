@@ -3,96 +3,6 @@ import Layout from '../layouts/Layout.astro'
 import Header from '@sections/buyOnline/header/Header.astro'
 import Main from '@sections/buyOnline/main/Main.astro'
 import Footer from '@sections/buyOnline/footer/Footer.astro'
-
-import SalchipapaSencilla from '@assets/imagesSalchipapas/salchipapa-original.webp'
-import HamburguesaSencilla from '@assets/imagesHamburguesas/hamburguesa-sencilla.webp'
-
-const listaEspecialidades = [
-  {
-    id: 'salchipapas',
-    name: 'Salchipapas',
-    href: 'especialidad-salchipapas',
-  },
-  {
-    id: 'hamburguesas',
-    name: 'Hamburguesas',
-    href: 'especialidad-hamburguesas',
-  },
-  {
-    id: 'perros-calientes',
-    name: 'Perros Calientes',
-    href: 'especialidad-perros-calientes',
-  },
-  {
-    id: 'sandwiches',
-    name: 'Sandwiches',
-    href: 'especialidad-sandwiches',
-  },
-  {
-    id: 'bebidas',
-    name: 'Bebidas',
-    href: 'especialidad-bebidas',
-  },
-]
-
-interface Product {
-  id: number
-  name: string
-  description: string
-  image: string
-  price: string
-}
-
-interface Specialty {
-  [key: string]: Product[]
-}
-
-interface Specialties {
-  [index: number]: Specialty
-}
-
-let specialties: Specialties = [
-  {
-    salchipapas: [
-      {
-        id: 1,
-        name: 'Salchipapa Sencilla',
-        description:
-          'Lorem ipsum, dolor sit amet consectetur adipisicing elit.',
-        image: SalchipapaSencilla.src,
-        price: '6.000 ',
-      },
-      {
-        id: 2,
-        name: 'Salchipapa Sencilla',
-        description:
-          'Lorem ipsum, dolor sit amet consectetur adipisicing elit.',
-        image: SalchipapaSencilla.src,
-        price: '34.000',
-      },
-    ],
-  },
-  {
-    hamburguesas: [
-      {
-        id: 1,
-        name: 'Hamburguesa Sencilla',
-        description:
-          'Lorem ipsum, dolor sit amet consectetur adipisicing elit.',
-        image: HamburguesaSencilla.src,
-        price: '6.000',
-      },
-      {
-        id: 2,
-        name: 'Hamburguesa Grande',
-        description:
-          'Lorem ipsum, dolor sit amet consectetur adipisicing elit.',
-        image: HamburguesaSencilla.src,
-        price: '34.000',
-      },
-    ],
-  },
-]
 ---
 
 <Layout title='Pedir en linea - Salchipapas La 20'>
@@ -103,12 +13,9 @@ let specialties: Specialties = [
     información pendiente
   </dialog>
 
-  <Header listaEspecialidades={listaEspecialidades} />
+  <Header />
 
-  <Main
-    listaEspecialidades={listaEspecialidades}
-    specialties={specialties}
-  />
+  <Main />
 
   <Footer />
 </Layout>
