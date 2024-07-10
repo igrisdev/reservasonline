@@ -8,9 +8,10 @@ import BigCartIcon from '@assets/icons/BigCartIcon.astro'
 
 import CartSpecialties from '@components/buyOnline/CartSpecialties.astro'
 
-import { $listaEspecialidades, $specialties } from '@store/Specialties'
+import { $listSpecialties } from '@store/ListSpecialtiesStore'
+import { $specialties } from '@store/SpecialtiesStore'
 
-const { value: listaEspecialidades } = $listaEspecialidades
+const { value: listSpecialties } = $listSpecialties
 const { value: specialties } = $specialties
 ---
 
@@ -66,7 +67,7 @@ const { value: specialties } = $specialties
           <main>
             <ul class='mt-4'>
               {
-                listaEspecialidades?.map(
+                listSpecialties?.map(
                   ({ name, href }: { name: string; href: string }) => (
                     <li class='py-5 border-b-2'>
                       <a href={'#' + href}>{name}</a>
@@ -90,14 +91,12 @@ const { value: specialties } = $specialties
 
           <main class='flex flex-col gap-4 mt-28 sm:mt-0'>
             {
-              listaEspecialidades?.map(({ id, name, href }: any) => {
+              listSpecialties?.map(({ id, name, href }: any) => {
                 const isSpecialty = specialties?.some((item: any) =>
                   Object.keys(item).includes(id)
                 )
 
                 if (!isSpecialty) return null
-
-                // console.log(id)
 
                 return (
                   <section
