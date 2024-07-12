@@ -2,9 +2,9 @@ import { atom } from 'nanostores'
 
 interface ShoppingCartStore {
   id: number
+  quantity: number
   name: string
-  description: string
-  image: string
+  ingredients: string
   price: string
 }
 
