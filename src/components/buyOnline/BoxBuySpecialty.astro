@@ -1,0 +1,100 @@
+---
+import BigCartIcon from '@assets/icons/BigCartIcon.astro'
+
+const isCartEmpty = false
+---
+
+<div
+  id='card-buy'
+  class='h-full relative hidden lg:block'
+>
+  <article
+    class:list={[
+      'sticky top-0 bg-local_background_primary min-h-[450px] rounded-xl shadow-xl p-4 py-8 flex flex-col items-center justify-start gap-4',
+      { '!justify-between !gap-0': isCartEmpty },
+    ]}
+  >
+    <h2 class='text-2xl font-bold'>Tu pedido</h2>
+
+    {
+      isCartEmpty ? (
+        <>
+          <div>
+            <BigCartIcon />
+          </div>
+          <div class='text-center'>
+            <small class='block'>
+              Todavía no has añadido ningún producto. Cuando lo hagas <br />{' '}
+              ¡veras los productos aquí!
+            </small>
+            <span class='block mt-4 text-sm font-bold'>
+              El precio del envío corre por tu cuenta
+            </span>
+          </div>
+        </>
+      ) : (
+        <div class='w-full flex flex-col gap-2'>
+          <article class='cart-buy'>
+            <div
+              class='text-center font-bold'
+              style='grid-area: quantity'
+            >
+              1x
+            </div>
+            <h3 style='grid-area: name'>Salchipapas</h3>
+            <p
+              class='text-center'
+              style='grid-area: price'
+            >
+              $6.000
+            </p>
+
+            <div
+              class='flex items-center justify-center'
+              style='grid-area: iconPlus'
+            >
+              <button class='bg-local_background_quaternary/30 font-bold text-xl rounded-full size-7 text-center text-local_name_secondary'>
+                -
+              </button>
+            </div>
+            <div
+              class=''
+              style='grid-area: ingredients'
+            >
+              <p class='text-[12px]'>Lorem ipsum dolor sit eli</p>
+              <button class='text-sm text-local_title_secondary'>editar</button>
+            </div>
+            <div
+              class='flex items-center justify-center'
+              style='grid-area: iconLess'
+            >
+              <button class='bg-local_background_quaternary/30 font-bold text-xl rounded-full size-7 text-center text-local_name_secondary'>
+                +
+              </button>
+            </div>
+          </article>
+        </div>
+      )
+    }
+  </article>
+</div>
+
+<style>
+  .cart-buy {
+    display: grid;
+    grid-template-areas:
+      'quantity name price'
+      'iconPlus ingredients iconLess'
+      'iconPlus ingredients iconLess';
+    grid-template-columns: 1fr 10fr 1fr;
+    gap: 10px;
+  }
+</style>
+
+<script>
+  import { $shoppingCartStore } from '@store/ShoppingCartStore'
+
+  $shoppingCartStore.listen((shoppingCartStore) => {
+    console.log(shoppingCartStore)
+  })
+</script>
