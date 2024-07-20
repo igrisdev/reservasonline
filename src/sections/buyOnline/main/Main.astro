@@ -5,11 +5,11 @@ import BigLikeIcon from '@assets/icons/BigLikeIcon.astro'
 import BigClockIcon from '@assets/icons/BigClockIcon.astro'
 import BigPeopleIcon from '@assets/icons/BigPeopleIcon.astro'
 
-import CartSpecialties from '@components/buyOnline/CartSpecialties.astro'
-
 import { $listSpecialties } from '@store/ListSpecialtiesStore'
 import { $specialties } from '@store/SpecialtiesStore'
-import BoxBuySpecialty from '@components/buyOnline/BoxBuySpecialty.astro'
+
+import { BoxBuySpecialty } from '@components/buyOnline/BoxBuySpecialty'
+import { CartSpecialties } from '@components/buyOnline/CartSpecialties'
 
 const { value: listSpecialties } = $listSpecialties
 const { value: specialties } = $specialties
@@ -119,6 +119,7 @@ const { value: specialties } = $specialties
                               name={name}
                               description={description}
                               price={price}
+                              client:load
                             />
                           )
                         )
@@ -133,7 +134,7 @@ const { value: specialties } = $specialties
       </section>
     </div>
 
-    <BoxBuySpecialty />
+    <BoxBuySpecialty client:load />
   </section>
 </main>
 
@@ -173,7 +174,7 @@ const { value: specialties } = $specialties
   })
 </script>
 
-<script>
+<!-- <script>
   const sidebarEspecialidades = document.getElementById(
     'sidebar-especialidades'
   ) as HTMLDivElement
@@ -203,4 +204,4 @@ const { value: specialties } = $specialties
   // buttonDialogInformation.addEventListener('click', () => {
   //   dialogInformation.showModal()
   // })
-</script>
+</script> -->
