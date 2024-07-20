@@ -149,6 +149,31 @@ const { value: specialties } = $specialties
 </style>
 
 <script>
+  import { isOpen } from '@store/Initial'
+
+  const buttonDialogInformation = document.getElementById(
+    'button-dialog-information'
+  ) as HTMLButtonElement
+  const dialogInformation = document.getElementById(
+    'dialog-information'
+  ) as HTMLDialogElement
+
+  function openDialogInformation() {
+    isOpen.set(true)
+  }
+
+  buttonDialogInformation.addEventListener('click', openDialogInformation)
+
+  isOpen.subscribe((open) => {
+    if (open) {
+      dialogInformation.style.display = 'block'
+    } else {
+      dialogInformation.style.display = 'none'
+    }
+  })
+</script>
+
+<script>
   const sidebarEspecialidades = document.getElementById(
     'sidebar-especialidades'
   ) as HTMLDivElement

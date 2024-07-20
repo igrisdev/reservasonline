@@ -94,7 +94,7 @@ const isCartEmpty = false
 <script>
   import { $shoppingCartStore } from '@store/ShoppingCartStore'
 
-  $shoppingCartStore.listen((shoppingCartStore) => {
+  $shoppingCartStore.subscribe((shoppingCartStore) => {
     console.log(shoppingCartStore)
   })
 </script>
