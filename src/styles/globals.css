@@ -1,0 +1,9 @@
+.cart-buy {
+  display: grid;
+  grid-template-areas:
+    'quantity name price'
+    'iconPlus ingredients iconLess'
+    'iconPlus ingredients iconLess';
+  grid-template-columns: 1fr 10fr 1fr;
+  gap: 10px;
+}
