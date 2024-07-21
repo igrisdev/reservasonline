@@ -11,8 +11,10 @@ import { $specialties } from '@store/SpecialtiesStore'
 import { BoxBuySpecialty } from '@components/buyOnline/BoxBuySpecialty'
 import { CartSpecialties } from '@components/buyOnline/CartSpecialties'
 
-const { value: listSpecialties } = $listSpecialties
-const { value: specialties } = $specialties
+import type { ListSpecialtiesInterface } from 'src/types'
+
+const listSpecialties = $listSpecialties.get()
+const specialties = $specialties.get()
 ---
 
 <main class='max-w-7xl mx-auto sm:mt-40 relative'>
@@ -91,43 +93,53 @@ const { value: specialties } = $specialties
 
           <main class='flex flex-col gap-4 mt-28 sm:mt-0'>
             {
-              listSpecialties?.map(({ id, name, href }: any) => {
-                const isSpecialty = specialties?.some((item: any) =>
-                  Object.keys(item).includes(id)
-                )
+              listSpecialties?.map(
+                ({ id, name, href }: ListSpecialtiesInterface) => {
+                  const isSpecialty = specialties.find((specialtyInfo) => {
+                    if (id in specialtyInfo) {
+                      return specialtyInfo
+                    }
+                  })
 
-                if (!isSpecialty) return
+                  if (!isSpecialty) return
 
-                return (
-                  <section
-                    id={href}
-                    class='sm:pt-4'
-                  >
-                    <h2 class='text-3xl font-bold mb-3'>{name}</h2>
-
-                    <div
-                      id='especialidades'
-                      class='especialidades'
+                  return (
+                    <section
+                      id={href}
+                      class='sm:pt-4'
                     >
-                      {specialties?.map((specialty: any) => {
-                        return specialty[id]?.map(
-                          ({ id, image, name, description, price }: any) => (
-                            <CartSpecialties
-                              id={id}
-                              nameSpecialty={specialty}
-                              image={image}
-                              name={name}
-                              description={description}
-                              price={price}
-                              client:load
-                            />
+                      <h2 class='text-3xl font-bold mb-3'>{name}</h2>
+
+                      <div
+                        id='especialidades'
+                        class='especialidades'
+                      >
+                        {specialties?.map((specialty: any) => {
+                          return specialty[id]?.map(
+                            ({
+                              id: idSpecialty,
+                              image,
+                              name,
+                              description,
+                              price,
+                            }: any) => (
+                              <CartSpecialties
+                                id={idSpecialty}
+                                nameSpecialty={id}
+                                image={image}
+                                name={name}
+                                description={description}
+                                price={price}
+                                client:load
+                              />
+                            )
                           )
-                        )
-                      })}
-                    </div>
-                  </section>
-                )
-              })
+                        })}
+                      </div>
+                    </section>
+                  )
+                }
+              )
             }
           </main>
         </div>
