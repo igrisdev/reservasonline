@@ -1,12 +1,7 @@
 import { atom } from 'nanostores'
+import type { ListSpecialtiesInterface } from 'src/types'
 
-interface ListSpecialties {
-  id: string
-  name: string
-  href: string
-}
-
-export const $listSpecialties = atom<ListSpecialties[]>([
+export const $listSpecialties = atom<ListSpecialtiesInterface[]>([
   {
     id: 'salchipapas',
     name: 'Salchipapas',
@@ -34,6 +29,8 @@ export const $listSpecialties = atom<ListSpecialties[]>([
   },
 ])
 
-export function addListSpecialties(listaEspecialidad: ListSpecialties) {
+export function addListSpecialties(
+  listaEspecialidad: ListSpecialtiesInterface
+) {
   $listSpecialties.set([...$listSpecialties.get(), listaEspecialidad])
 }

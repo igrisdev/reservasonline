@@ -1,15 +1,10 @@
 import { atom } from 'nanostores'
+import type { ShoppingCartStoreInterface } from 'src/types'
 
-interface ShoppingCartStore {
-  id: number
-  quantity: number
-  name: string
-  ingredients: string
-  price: string
-}
+export const $shoppingCartStore = atom<ShoppingCartStoreInterface[]>([])
 
-export const $shoppingCartStore = atom<ShoppingCartStore[]>([])
-
-export function addShoppingCartStore(shoppingCartStore: ShoppingCartStore) {
+export function addShoppingCartStore(
+  shoppingCartStore: ShoppingCartStoreInterface
+) {
   $shoppingCartStore.set([...$shoppingCartStore.get(), shoppingCartStore])
 }
