@@ -2,14 +2,7 @@ import { $specialties } from '@store/SpecialtiesStore'
 import { addShoppingCartStore } from '@store/ShoppingCartStore'
 import { useStore } from '@nanostores/react'
 
-interface CartSpecialties {
-  id: number
-  nameSpecialty: any
-  image: string
-  name: string
-  description: string
-  price: string
-}
+import type { CartSpecialtiesInterface } from 'src/types'
 
 export const CartSpecialties = ({
   id,
@@ -18,35 +11,33 @@ export const CartSpecialties = ({
   name,
   description,
   price,
-}: CartSpecialties) => {
+}: CartSpecialtiesInterface) => {
   const specialties = useStore($specialties)
-  const specialtyName = Object.keys(nameSpecialty).toString()
 
   const handleAddToCart = ({
-    specialtyName,
+    nameSpecialty,
     id,
   }: {
-    specialtyName: string
+    nameSpecialty: string
     id: number
   }) => {
-    console.log(specialtyName, id)
+    let foundListSpecialty: { [key: string]: any } | undefined
 
-    const foundListSpecialty = specialties.find((specialtyInfo) => {
-      const isFound = Object.keys(specialtyInfo).includes(specialtyName)
-
-      if (!isFound) return
-
-      return specialtyInfo
+    foundListSpecialty = specialties.find((specialtyInfo) => {
+      if (nameSpecialty in specialtyInfo) {
+        return specialtyInfo
+      }
     })
 
-    const found = foundListSpecialty[specialtyName].find(
-      (item) => item.id === id
-    )
+    if (!foundListSpecialty) return
 
-    const { id: idFound, name, ingredients, price } = found
+    const found = foundListSpecialty[nameSpecialty].find(
+      (item: any) => item.id === id
+    )
+    const { name, ingredients, price } = found
 
     const newShoppingCartStore = {
-      id: idFound,
+      id: nameSpecialty + '-' + id,
       quantity: 1,
       name,
       ingredients,
@@ -82,7 +73,7 @@ export const CartSpecialties = ({
       <div className='flex justify-between items-center mt-4'>
         <span>$ {price}</span>
         <button
-          onClick={() => handleAddToCart({ specialtyName, id })}
+          onClick={() => handleAddToCart({ nameSpecialty, id })}
           className='bg-local_background_quaternary/30 font-bold text-2xl rounded-full size-8 text-center text-local_name_secondary button-add-to-cart'
         >
           +
