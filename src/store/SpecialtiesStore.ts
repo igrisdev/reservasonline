@@ -32,15 +32,13 @@ export const $specialties = atom([
       },
       {
         id: 2,
-        name: 'Salchipapa Sencilla',
+        name: 'Salchipapa Grande',
         description:
           'Lorem ipsum, dolor sit amet consectetur adipisicing elit.',
         image: SalchipapaSencilla.src,
         price: '34.000',
       },
     ],
-  },
-  {
     hamburguesas: [
       {
         id: 1,
@@ -57,6 +55,16 @@ export const $specialties = atom([
           'Lorem ipsum, dolor sit amet consectetur adipisicing elit.',
         image: HamburguesaSencilla.src,
         price: '34.000',
+      },
+    ],
+    sandwiches: [
+      {
+        id: 2,
+        name: 'Sandwich Grande',
+        description:
+          'Lorem ipsum, dolor sit amet consectetur adipisicing elit.',
+        image: HamburguesaSencilla.src,
+        price: '24.000',
       },
     ],
   },
