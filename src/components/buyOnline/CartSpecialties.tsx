@@ -2,6 +2,15 @@ import { $specialties } from '@store/SpecialtiesStore'
 import { addShoppingCartStore } from '@store/ShoppingCartStore'
 import { useStore } from '@nanostores/react'
 
+interface CartSpecialties {
+  id: number
+  nameSpecialty: any
+  image: string
+  name: string
+  description: string
+  price: string
+}
+
 export const CartSpecialties = ({
   id,
   nameSpecialty,
@@ -9,18 +18,42 @@ export const CartSpecialties = ({
   name,
   description,
   price,
-}) => {
+}: CartSpecialties) => {
   const specialties = useStore($specialties)
-  const specialty = Object.keys(nameSpecialty).toString()
+  const specialtyName = Object.keys(nameSpecialty).toString()
 
-  const handleAddToCart = () => {
-    addShoppingCartStore({
-      id: 1,
-      quantity: 1,
-      name: 'Salchipapas',
-      ingredients: 'Lorem ipsum dolor sit eli',
-      price: '$6.000',
+  const handleAddToCart = ({
+    specialtyName,
+    id,
+  }: {
+    specialtyName: string
+    id: number
+  }) => {
+    console.log(specialtyName, id)
+
+    const foundListSpecialty = specialties.find((specialtyInfo) => {
+      const isFound = Object.keys(specialtyInfo).includes(specialtyName)
+
+      if (!isFound) return
+
+      return specialtyInfo
     })
+
+    const found = foundListSpecialty[specialtyName].find(
+      (item) => item.id === id
+    )
+
+    const { id: idFound, name, ingredients, price } = found
+
+    const newShoppingCartStore = {
+      id: idFound,
+      quantity: 1,
+      name,
+      ingredients,
+      price,
+    }
+
+    addShoppingCartStore(newShoppingCartStore)
   }
 
   return (
@@ -49,8 +82,7 @@ export const CartSpecialties = ({
       <div className='flex justify-between items-center mt-4'>
         <span>$ {price}</span>
         <button
-          data-identifier={specialty + '-' + id}
-          onClick={handleAddToCart}
+          onClick={() => handleAddToCart({ specialtyName, id })}
           className='bg-local_background_quaternary/30 font-bold text-2xl rounded-full size-8 text-center text-local_name_secondary button-add-to-cart'
         >
           +

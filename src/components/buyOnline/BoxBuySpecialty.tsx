@@ -41,47 +41,54 @@ export const BoxBuySpecialty = () => {
           </>
         ) : (
           <div className='w-full flex flex-col gap-2'>
-            <article className='cart-buy'>
-              <div
-                style={{ gridArea: 'quantity' }}
-                className='text-center font-bold'
-              >
-                1x
-              </div>
-              <h3 style={{ gridArea: 'name' }}>Salchipapas</h3>
-              <p
-                className='text-center'
-                style={{ gridArea: 'price' }}
-              >
-                $6.000
-              </p>
+            {shoppingCartStore.map(
+              ({ id, quantity, name, ingredients, price }) => (
+                <article
+                  className='cart-buy'
+                  key={id}
+                >
+                  <div
+                    style={{ gridArea: 'quantity' }}
+                    className='text-center font-bold'
+                  >
+                    {quantity}x
+                  </div>
+                  <h3 style={{ gridArea: 'name' }}>{name}</h3>
+                  <p
+                    className='text-center'
+                    style={{ gridArea: 'price' }}
+                  >
+                    ${price}
+                  </p>
 
-              <div
-                className='flex items-center justify-center'
-                style={{ gridArea: 'iconPlus' }}
-              >
-                <button className='bg-local_background_quaternary/30 font-bold text-xl rounded-full size-7 text-center text-local_name_secondary'>
-                  -
-                </button>
-              </div>
-              <div
-                className=''
-                style={{ gridArea: 'ingredients' }}
-              >
-                <p className='text-[12px]'>Lorem ipsum dolor sit eli</p>
-                <button className='text-sm text-local_title_secondary'>
-                  editar
-                </button>
-              </div>
-              <div
-                className='flex items-center justify-center'
-                style={{ gridArea: 'iconLess' }}
-              >
-                <button className='bg-local_background_quaternary/30 font-bold text-xl rounded-full size-7 text-center text-local_name_secondary'>
-                  +
-                </button>
-              </div>
-            </article>
+                  <div
+                    className='flex items-center justify-center'
+                    style={{ gridArea: 'iconPlus' }}
+                  >
+                    <button className='bg-local_background_quaternary/30 font-bold text-xl rounded-full size-7 text-center text-local_name_secondary'>
+                      -
+                    </button>
+                  </div>
+                  <div
+                    className=''
+                    style={{ gridArea: 'ingredients' }}
+                  >
+                    <p className='text-[12px]'>{ingredients}</p>
+                    <button className='text-sm text-local_title_secondary'>
+                      editar
+                    </button>
+                  </div>
+                  <div
+                    className='flex items-center justify-center'
+                    style={{ gridArea: 'iconLess' }}
+                  >
+                    <button className='bg-local_background_quaternary/30 font-bold text-xl rounded-full size-7 text-center text-local_name_secondary'>
+                      +
+                    </button>
+                  </div>
+                </article>
+              )
+            )}
           </div>
         )}
       </article>
