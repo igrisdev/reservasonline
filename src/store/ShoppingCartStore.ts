@@ -8,3 +8,9 @@ export function addShoppingCartStore(
 ) {
   $shoppingCartStore.set([...$shoppingCartStore.get(), shoppingCartStore])
 }
+
+export function sumShoppingCartStore(
+  shoppingCartStore: ShoppingCartStoreInterface[]
+) {
+  $shoppingCartStore.set(shoppingCartStore)
+}
