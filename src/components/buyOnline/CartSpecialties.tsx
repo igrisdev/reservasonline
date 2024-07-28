@@ -1,8 +1,13 @@
-import { $specialties } from '@store/SpecialtiesStore'
-import { addShoppingCartStore } from '@store/ShoppingCartStore'
-import { useStore } from '@nanostores/react'
-
 import type { CartSpecialtiesInterface } from 'src/types'
+
+import { useStore } from '@nanostores/react'
+import { $specialties } from '@store/SpecialtiesStore'
+import {
+  $shoppingCartStore,
+  addShoppingCartStore,
+  sumShoppingCartStore,
+} from '@store/ShoppingCartStore'
+import { handleSumShoppingCartStore } from '@lib/functions'
 
 export const CartSpecialties = ({
   id,
@@ -13,6 +18,7 @@ export const CartSpecialties = ({
   price,
 }: CartSpecialtiesInterface) => {
   const specialties = useStore($specialties)
+  const shoppingCartStore = useStore($shoppingCartStore)
 
   const handleAddToCart = ({
     nameSpecialty,
@@ -21,6 +27,19 @@ export const CartSpecialties = ({
     nameSpecialty: string
     id: number
   }) => {
+    const isAlreadyInCart = shoppingCartStore.find(
+      ({ id: cartId }) => cartId === nameSpecialty + '-' + id
+    )
+
+    if (isAlreadyInCart) {
+      const newQuantityBuyCart = handleSumShoppingCartStore({
+        shoppingCartStore,
+        id: nameSpecialty + '-' + id,
+      })
+
+      return sumShoppingCartStore(newQuantityBuyCart)
+    }
+
     let foundListSpecialty: { [key: string]: any } | undefined
 
     foundListSpecialty = specialties.find((specialtyInfo) => {
