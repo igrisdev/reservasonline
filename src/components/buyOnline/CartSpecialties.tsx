@@ -5,9 +5,9 @@ import { $specialties } from '@store/SpecialtiesStore'
 import {
   $shoppingCartStore,
   addShoppingCartStore,
-  sumShoppingCartStore,
+  updateShoppingCartStore,
 } from '@store/ShoppingCartStore'
-import { handleSumShoppingCartStore } from '@lib/functions'
+import { sumSpecialtyShoppingCartStore } from '@lib/functions'
 
 export const CartSpecialties = ({
   id,
@@ -32,12 +32,12 @@ export const CartSpecialties = ({
     )
 
     if (isAlreadyInCart) {
-      const newQuantityBuyCart = handleSumShoppingCartStore({
+      const newQuantityBuyCart = sumSpecialtyShoppingCartStore({
         shoppingCartStore,
         id: nameSpecialty + '-' + id,
       })
 
-      return sumShoppingCartStore(newQuantityBuyCart)
+      return updateShoppingCartStore(newQuantityBuyCart)
     }
 
     let foundListSpecialty: { [key: string]: any } | undefined

@@ -1,15 +1,53 @@
 import '@styles/globals.css'
 
 import { useStore } from '@nanostores/react'
-import { $shoppingCartStore } from '@store/ShoppingCartStore'
+import {
+  $shoppingCartStore,
+  updateShoppingCartStore,
+} from '@store/ShoppingCartStore'
 
 import { BigCartIcon } from '@assets/icons/BigCartIcon'
+import {
+  resSpecialtyShoppingCartStore,
+  sumSpecialtyShoppingCartStore,
+} from '@lib/functions'
+import type { ShoppingCartStoreInterface } from 'src/types'
 
 export const BoxBuySpecialty = () => {
   const shoppingCartStore = useStore($shoppingCartStore)
   const isCartEmpty = shoppingCartStore.length === 0
 
   const stylesIsCartEmpty = isCartEmpty ? '!justify-between !gap-0' : ''
+
+  const handleClickButtonResSpecialty = ({
+    shoppingCartStore,
+    id,
+  }: {
+    shoppingCartStore: ShoppingCartStoreInterface[]
+    id: string
+  }) => {
+    const newQuantityBuyCart = resSpecialtyShoppingCartStore({
+      shoppingCartStore,
+      id,
+    })
+
+    return updateShoppingCartStore(newQuantityBuyCart)
+  }
+
+  const handleClickButtonSumSpecialty = ({
+    shoppingCartStore,
+    id,
+  }: {
+    shoppingCartStore: ShoppingCartStoreInterface[]
+    id: string
+  }) => {
+    const newQuantityBuyCart = sumSpecialtyShoppingCartStore({
+      shoppingCartStore,
+      id,
+    })
+
+    return updateShoppingCartStore(newQuantityBuyCart)
+  }
 
   return (
     <div
@@ -65,7 +103,12 @@ export const BoxBuySpecialty = () => {
                     className='flex items-center justify-center'
                     style={{ gridArea: 'iconPlus' }}
                   >
-                    <button className='bg-local_background_quaternary/30 font-bold text-xl rounded-full size-7 text-center text-local_name_secondary'>
+                    <button
+                      onClick={() =>
+                        handleClickButtonResSpecialty({ shoppingCartStore, id })
+                      }
+                      className='bg-local_background_quaternary/30 font-bold text-xl rounded-full size-7 text-center text-local_name_secondary'
+                    >
                       -
                     </button>
                   </div>
@@ -82,7 +125,12 @@ export const BoxBuySpecialty = () => {
                     className='flex items-center justify-center'
                     style={{ gridArea: 'iconLess' }}
                   >
-                    <button className='bg-local_background_quaternary/30 font-bold text-xl rounded-full size-7 text-center text-local_name_secondary'>
+                    <button
+                      onClick={() =>
+                        handleClickButtonSumSpecialty({ shoppingCartStore, id })
+                      }
+                      className='bg-local_background_quaternary/30 font-bold text-xl rounded-full size-7 text-center text-local_name_secondary'
+                    >
                       +
                     </button>
                   </div>
