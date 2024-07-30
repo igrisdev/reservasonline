@@ -52,11 +52,11 @@ export const BoxBuySpecialty = () => {
   return (
     <div
       id='card-buy'
-      className='h-full relative hidden lg:block'
+      className='h-full relative hidden lg:flex max-h-[450px]'
     >
       <article
         className={
-          'sticky top-0 bg-local_background_primary min-h-[450px] rounded-xl shadow-xl p-4 py-8 flex flex-col items-center justify-start gap-4 ' +
+          'sticky top-0 bg-local_background_primary rounded-xl shadow-xl p-4 pt-8 flex flex-col items-center justify-start gap-4 ' +
           stylesIsCartEmpty
         }
       >
@@ -78,65 +78,78 @@ export const BoxBuySpecialty = () => {
             </div>
           </>
         ) : (
-          <div className='w-full flex flex-col gap-2'>
-            {shoppingCartStore.map(
-              ({ id, quantity, name, ingredients, price }) => (
-                <article
-                  className='cart-buy'
-                  key={id}
-                >
-                  <div
-                    style={{ gridArea: 'quantity' }}
-                    className='text-center font-bold'
+          <div className='flex flex-col justify-between h-full'>
+            <div className='flex flex-col gap-2'>
+              {shoppingCartStore.map(
+                ({ id, quantity, name, ingredients, price }) => (
+                  <article
+                    className='cart-buy'
+                    key={id}
                   >
-                    {quantity}x
-                  </div>
-                  <h3 style={{ gridArea: 'name' }}>{name}</h3>
-                  <p
-                    className='text-center'
-                    style={{ gridArea: 'price' }}
-                  >
-                    ${price}
-                  </p>
+                    <div
+                      style={{ gridArea: 'quantity' }}
+                      className='text-center font-bold'
+                    >
+                      {quantity}x
+                    </div>
+                    <h3 style={{ gridArea: 'name' }}>{name}</h3>
+                    <p
+                      className='text-center'
+                      style={{ gridArea: 'price' }}
+                    >
+                      ${price}
+                    </p>
 
-                  <div
-                    className='flex items-center justify-center'
-                    style={{ gridArea: 'iconPlus' }}
-                  >
-                    <button
-                      onClick={() =>
-                        handleClickButtonResSpecialty({ shoppingCartStore, id })
-                      }
-                      className='bg-local_background_quaternary/30 font-bold text-xl rounded-full size-7 text-center text-local_name_secondary'
+                    <div
+                      className='flex items-center justify-center'
+                      style={{ gridArea: 'iconPlus' }}
                     >
-                      -
-                    </button>
-                  </div>
-                  <div
-                    className=''
-                    style={{ gridArea: 'ingredients' }}
-                  >
-                    <p className='text-[12px]'>{ingredients}</p>
-                    <button className='text-sm text-local_title_secondary'>
-                      editar
-                    </button>
-                  </div>
-                  <div
-                    className='flex items-center justify-center'
-                    style={{ gridArea: 'iconLess' }}
-                  >
-                    <button
-                      onClick={() =>
-                        handleClickButtonSumSpecialty({ shoppingCartStore, id })
-                      }
-                      className='bg-local_background_quaternary/30 font-bold text-xl rounded-full size-7 text-center text-local_name_secondary'
+                      <button
+                        onClick={() =>
+                          handleClickButtonResSpecialty({
+                            shoppingCartStore,
+                            id,
+                          })
+                        }
+                        className='bg-local_background_quaternary/30 font-bold text-xl rounded-full size-7 text-center text-local_name_secondary'
+                      >
+                        -
+                      </button>
+                    </div>
+                    <div
+                      className=''
+                      style={{ gridArea: 'ingredients' }}
                     >
-                      +
-                    </button>
-                  </div>
-                </article>
-              )
-            )}
+                      <p className='text-[12px]'>{ingredients}</p>
+                      <button className='text-sm text-local_title_secondary'>
+                        editar
+                      </button>
+                    </div>
+                    <div
+                      className='flex items-center justify-center'
+                      style={{ gridArea: 'iconLess' }}
+                    >
+                      <button
+                        onClick={() =>
+                          handleClickButtonSumSpecialty({
+                            shoppingCartStore,
+                            id,
+                          })
+                        }
+                        className='bg-local_background_quaternary/30 font-bold text-xl rounded-full size-7 text-center text-local_name_secondary'
+                      >
+                        +
+                      </button>
+                    </div>
+                  </article>
+                )
+              )}
+            </div>
+            <div className='flex justify-center'>
+              <button className='w-full bg-local_background_quaternary text-center text-local_title_tertiary transition hover:bg-local_background_quaternary/80 rounded-full px-3 py-1'>
+                Realizar Pedido
+              </button>
+            </div>
           </div>
         )}
       </article>
