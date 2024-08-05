@@ -17,7 +17,7 @@ export const BoxBuySpecialty = () => {
   const shoppingCartStore = useStore($shoppingCartStore)
   const isCartEmpty = shoppingCartStore.length === 0
 
-  const stylesIsCartEmpty = isCartEmpty ? '!justify-between !gap-0' : ''
+  const stylesIsCartEmpty = isCartEmpty ? '!justify-between !gap-0 h-[496px]' : ''
 
   const handleClickButtonResSpecialty = ({
     shoppingCartStore,
@@ -52,7 +52,7 @@ export const BoxBuySpecialty = () => {
   return (
     <div
       id='card-buy'
-      className='h-full relative hidden lg:flex max-h-[450px]'
+      className='h-full relative hidden lg:block'
     >
       <article
         className={
@@ -78,8 +78,8 @@ export const BoxBuySpecialty = () => {
             </div>
           </>
         ) : (
-          <div className='flex flex-col justify-between h-full'>
-            <div className='flex flex-col gap-2'>
+          <div className='flex flex-col gap-3 justify-between h-[400px] '>
+            <div className='flex flex-col gap-2 overflow-auto'>
               {shoppingCartStore.map(
                 ({ id, quantity, name, ingredients, price }) => (
                   <article
