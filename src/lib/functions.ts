@@ -24,12 +24,13 @@ export const resSpecialtyShoppingCartStore = ({
   id: string
 }) => {
   const isQuantityZero = shoppingCartStore.find(
-    (item: ShoppingCartStoreInterface) => item.quantity === 1
+    (item: ShoppingCartStoreInterface) => item.quantity === 1 && item.id === id
   )
 
   if (isQuantityZero)
     return shoppingCartStore.filter(
-      (item: ShoppingCartStoreInterface) => item.quantity > 1
+      (item: ShoppingCartStoreInterface) =>
+        item.quantity >= 1 && item.id !== isQuantityZero.id
     )
 
   return shoppingCartStore.map((item: ShoppingCartStoreInterface) => {
