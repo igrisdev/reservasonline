@@ -8,9 +8,54 @@ import Footer from '@sections/buyOnline/footer/Footer.astro'
 <Layout title='Pedir en linea - Salchipapas La 20'>
   <dialog
     id='dialog-information'
-    class=''
+    class='z-10 rounded-xl'
   >
-    información pendiente
+    <div class='p-16'>
+      <button
+        id='button-dialog-information-close'
+        class='absolute top-6 right-8 bg-local_background_tertiary size-8 rounded-full font-bold'
+        >X</button
+      >
+
+      <h2 class='text-2xl font-extrabold'>Información del establecimiento</h2>
+
+      <section>
+        <div class='py-4 border-b-4 border-bg-local_background_tertiary'>
+          <h3 class='text-xl font-bold'>Popayán</h3>
+        </div>
+        <div class='py-4 border-b-4 border-bg-local_background_tertiary'>
+          <h3 class='text-xl font-bold'>Dirección</h3>
+          <p class='text-sm'>Cruz del Sur, Popayán, Cauca</p>
+        </div>
+        <div class='py-4 border-b-4 border-bg-local_background_tertiary'>
+          <h3 class='text-xl font-bold'>Horario de atención</h3>
+          <ul>
+            <li>Lunes a Viernes: 6pm a 12 pm</li>
+            <li>Sábados y Domingos: 6pm a 12 pm</li>
+          </ul>
+        </div>
+        <div class='py-4'>
+          <h3 class='text-xl font-bold'>Contacto</h3>
+          <section>
+            <div>
+              <div>icono</div>
+              +573105213172
+            </div>
+            <div>
+              <div>icono</div>
+              johan.manuel.alvarez.pintado@gmail.com
+            </div>
+          </section>
+        </div>
+        <div class='grid place-content-center mt-6'>
+          <button
+            id='button-dialog-already'
+            class='bg-local_background_quaternary text-center text-local_title_tertiary transition hover:bg-local_background_quaternary/80 rounded-full py-2 px-4 text-lg'
+            >Entendido</button
+          >
+        </div>
+      </section>
+    </div>
   </dialog>
 
   <Header />
@@ -19,3 +64,23 @@ import Footer from '@sections/buyOnline/footer/Footer.astro'
 
   <Footer />
 </Layout>
+
+<style></style>
+
+<script>
+  import { isOpen } from '@store/Initial'
+
+  const buttonDialogInformation = document.getElementById(
+    'button-dialog-information-close'
+  ) as HTMLButtonElement
+  const buttonDialogAlready = document.getElementById(
+    'button-dialog-already'
+  ) as HTMLButtonElement
+
+  function closeDialogInformation() {
+    isOpen.set(false)
+  }
+
+  buttonDialogInformation.addEventListener('click', closeDialogInformation)
+  buttonDialogAlready.addEventListener('click', closeDialogInformation)
+</script>

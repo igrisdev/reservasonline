@@ -29,7 +29,7 @@ const specialties = $specialties.get()
           </div>
 
           <button
-            id='button-dialog-information'
+            id='button-dialog-information-open'
             class='bg-local_background_secondary rounded-full h-10 p-2 flex gap-2 text-local_text_primary items-center'
           >
             <InfoIcon />
@@ -156,16 +156,13 @@ const specialties = $specialties.get()
     grid-template-columns: repeat(auto-fill, minmax(min(350px, 100%), 1fr));
     gap: 10px;
   }
-
-  #dialog-information {
-  }
 </style>
 
 <script>
   import { isOpen } from '@store/Initial'
 
-  const buttonDialogInformation = document.getElementById(
-    'button-dialog-information'
+  const buttonDialogInformationOpen = document.getElementById(
+    'button-dialog-information-open'
   ) as HTMLButtonElement
   const dialogInformation = document.getElementById(
     'dialog-information'
@@ -175,7 +172,7 @@ const specialties = $specialties.get()
     isOpen.set(true)
   }
 
-  buttonDialogInformation.addEventListener('click', openDialogInformation)
+  buttonDialogInformationOpen.addEventListener('click', openDialogInformation)
 
   isOpen.subscribe((open) => {
     if (open) {
@@ -209,11 +206,11 @@ const specialties = $specialties.get()
   const dialogInformation = document.getElementById(
     'dialog-information'
   ) as HTMLDialogElement
-  const buttonDialogInformation = document.getElementById(
-    'button-dialog-information'
+  const buttonDialogInformationOpen = document.getElementById(
+    'button-dialog-information-open'
   ) as HTMLButtonElement
 
-  // buttonDialogInformation.addEventListener('click', () => {
+  // buttonDialogInformationOpen.addEventListener('click', () => {
   //   dialogInformation.showModal()
   // })
 </script> -->
