@@ -12,36 +12,44 @@ const specialties = [
     name: 'Salchipapas',
     image: Salchipapas.src,
     price: '6.000 - 34.000',
+    href: 'especialidad-salchipapas',
   },
   {
     name: 'Hamburguesas',
     image: Hamburguesas.src,
     price: '10.000 - 34.000',
+    href: 'especialidad-hamburguesas',
   },
   {
     name: 'Perros Calientes',
     image: PerrosCalientes.src,
     price: '8.500 - 34.000',
+    href: 'especialidad-perros-calientes',
   },
   {
     name: 'Sandwiches',
     image: Sandwiches.src,
     price: '10.000 - 34.000',
+    href: 'especialidad-sandwiches',
   },
   {
     name: 'Bebidas',
     image: Bebidas.src,
     price: '2.500 - 34.000',
+    href: 'especialidad-bebidas',
   },
 ]
 ---
 
-<section class='p-2 max-w-7xl mx-auto' id='specialties'>
+<section
+  class='p-2 max-w-7xl mx-auto'
+  id='specialties'
+>
   <h2 class='text-center text-2xl font-bold mb-4'>ESPECIALIDADES</h2>
 
   <div class='relative container-specialties'>
     {
-      specialties.map(({ name, image, price }: any) => (
+      specialties.map(({ name, image, price, href }: any) => (
         <article class='rounded-md shadow-md relative overflow-hidden'>
           <img
             src={image}
@@ -57,7 +65,7 @@ const specialties = [
               </div>
 
               <LinkBuy
-                href='#'
+                href={`/buy-online#${href}`}
                 styles='flex'
                 value='Ordena'
               />
